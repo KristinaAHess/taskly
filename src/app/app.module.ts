@@ -9,6 +9,10 @@ import { DashboardOverviewComponent } from './dashboard/dashboard-overview/dashb
 import { DashboardTemplateComponent } from './dashboard/dashboard-template/dashboard-template.component';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
+import {SharedModule} from './shared/shared.module';
+import {CalendarModule, DateAdapter} from 'angular-calendar';
+import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
