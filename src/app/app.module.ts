@@ -5,10 +5,12 @@ import { AppComponent } from './app.component';
 import {MemberModule} from './member/member.module';
 import {TaskModule} from './task/task.module';
 import { API_ENDPOINT } from './app.tokens';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
