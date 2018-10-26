@@ -19,9 +19,6 @@ export class TaskDetailsComponent implements OnInit {
   constructor(private route: ActivatedRoute, private store: Store<ApplicationState>, private router: Router) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.store.dispatch(new LoadTasksAction());
-    this.store.dispatch(new SelectTaskAction(+id));
     this.task$ = this.store.pipe(select(TasksQuery.getSelectedTask));
   }
 

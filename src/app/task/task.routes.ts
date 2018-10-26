@@ -3,6 +3,7 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
 import { Routes } from '@angular/router';
 import { TaskDashboardComponent } from './task-dashboard/task-dashboard.component';
 import { TaskCreateComponent } from './task-create/task-create.component';
+import { TaskExistsGuard } from './task-exists.guard';
 
 export const TASK_ROUTES: Routes = [
   { path: '', component: TaskDashboardComponent,
@@ -12,12 +13,12 @@ export const TASK_ROUTES: Routes = [
       {
         path: ':id',
         component: TaskDetailsComponent,
-        // canActivate: [TaskExistsGuard]
+        canActivate: [TaskExistsGuard]
       },
       {
         path: ':id/edit',
         component: TaskEditComponent,
-        // canActivate: [TaskExistsGuard]
+        canActivate: [TaskExistsGuard]
       },
     ]
   },

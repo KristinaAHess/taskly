@@ -16,6 +16,7 @@ import { TaskComponent } from './task.component';
 import { TASK_ROUTES } from './task.routes';
 import { TaskService } from './task.service';
 import { MaterialModule } from '../material.module';
+import { TaskExistsGuard } from './task-exists.guard';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { MaterialModule } from '../material.module';
     TaskComponent
   ],
   providers: [
-    TaskService
+    TaskService,
+    TaskExistsGuard
   ]
 })
 export class TaskModule {
