@@ -7,6 +7,7 @@ import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import {MemberService} from '../member/member.service';
+import { DashboardTemplateComponent } from './dashboard-template/dashboard-template.component';
 
 @NgModule({
   imports: [
@@ -21,10 +22,12 @@ import {MemberService} from '../member/member.service';
   declarations: [
     TaskCalendarComponent,
     MemberListComponent,
+    DashboardTemplateComponent
   ],
   exports: [
     TaskCalendarComponent,
     MemberListComponent,
+    DashboardTemplateComponent
   ],
   providers: [
     MemberService
