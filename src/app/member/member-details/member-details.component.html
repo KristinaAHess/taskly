@@ -6,14 +6,22 @@
       <mat-card-subtitle>Score: {{member?.score}}</mat-card-subtitle>
     </mat-card-title-group>
     <mat-card-content>
-      <dl>
-        <dt>Nickname:</dt>
-        <dd>{{member?.nickname || '-'}}</dd>
-        <dt>Birthday:</dt>
-        <dd>{{member?.birthday || '-'}}</dd>
-        <dt>Sex:</dt>
-        <dd>{{member?.sex || '-'}}</dd>
-      </dl>
+      <mat-tab-group>
+
+        <mat-tab label="Details">
+          <dl>
+            <dt>Nickname:</dt>
+            <dd>{{member?.nickname || '-'}}</dd>
+            <dt>Birthday:</dt>
+            <dd>{{member?.birthday || '-'}}</dd>
+            <dt>Sex:</dt>
+            <dd>{{member?.sex || '-'}}</dd>
+          </dl>
+        </mat-tab>
+
+        <mat-tab label="Todos"> Content 2</mat-tab>
+      </mat-tab-group>
+
     </mat-card-content>
     <mat-card-actions fxLayout fxLayoutAlign="center center">
       <!--<a mat-button (click)="edit.emit()" title="Edit {{member?.name}}">Edit</a>-->

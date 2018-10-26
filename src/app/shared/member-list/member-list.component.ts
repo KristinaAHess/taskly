@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Member } from '../../member/models/member';
-import { LoadMembersAction } from '../../state/member/member.actions';
+import { LoadMembersAction, SelectMemberAction } from '../../state/member/member.actions';
 import { select, Store } from '@ngrx/store';
 import { MembersQuery } from '../../state/member/member.reducer';
 import { ApplicationState } from '../../state/app.state';
@@ -25,6 +25,10 @@ export class MemberListComponent implements OnInit {
 
   trackByMemberId(index, member) {
     return member.id;
+  }
+
+  selectUser(id) {
+    this.store.dispatch(new SelectMemberAction(id));
   }
 
 }
