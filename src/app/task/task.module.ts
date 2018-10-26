@@ -18,6 +18,7 @@ import { TaskService } from './task.service';
 import { MaterialModule } from '../material.module';
 import { TaskExistsGuard } from './task-exists.guard';
 import { SharedModule } from '../shared/shared.module';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { SharedModule } from '../shared/shared.module';
     StoreModule.forFeature('tasks', tasksReducer),
     RouterModule.forChild(TASK_ROUTES),
     MaterialModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     TaskDashboardComponent,
