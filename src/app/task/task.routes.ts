@@ -5,10 +5,22 @@ import { TaskDashboardComponent } from './task-dashboard/task-dashboard.componen
 import { TaskCreateComponent } from './task-create/task-create.component';
 
 export const TASK_ROUTES: Routes = [
-  { path: '', component: TaskDashboardComponent },
-  { path: 'create', component: TaskCreateComponent },
-  { path: ':id', component: TaskDetailsComponent },
-  { path: ':id/edit', component: TaskEditComponent },
+  { path: '', component: TaskDashboardComponent,
+    children: [
+      { path: '', redirectTo: '0', pathMatch: 'full' },
+      { path: 'create', component: TaskCreateComponent },
+      {
+        path: ':id',
+        component: TaskDetailsComponent,
+        // canActivate: [TaskExistsGuard]
+      },
+      {
+        path: ':id/edit',
+        component: TaskEditComponent,
+        // canActivate: [TaskExistsGuard]
+      },
+    ]
+  },
 
   { path: '**', redirectTo: '/' }
 ];
