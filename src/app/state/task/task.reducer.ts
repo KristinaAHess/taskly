@@ -1,4 +1,4 @@
-import { TasksActions, TaskActionTypes } from './task.actions';
+import { TaskActionTypes, TasksActions } from './task.actions';
 import { Task } from 'src/app/task/models/task';
 import { ApplicationState } from '../app.state';
 import { createSelector } from '@ngrx/store';

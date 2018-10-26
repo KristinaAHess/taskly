@@ -6,7 +6,6 @@ import { PreloadAllModules, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
 import { API_ENDPOINT } from './app.tokens';
-import { MaterialModule } from './material.module';
 import { DashboardOverviewComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
 import { DashboardTemplateComponent } from './dashboard/dashboard-template/dashboard-template.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -27,7 +26,6 @@ import {SharedModule} from './shared/shared.module';
     SharedModule,
     RouterModule.forRoot(APP_ROUTES, { preloadingStrategy: PreloadAllModules } ),
     HttpClientModule,
-    MaterialModule
   ],
   providers: [
     {provide: API_ENDPOINT, useValue: 'http://localhost:3000'},

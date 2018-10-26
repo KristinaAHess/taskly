@@ -15,6 +15,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskComponent } from './task.component';
 import { TASK_ROUTES } from './task.routes';
 import { TaskService } from './task.service';
+import { MaterialModule } from '../material.module';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { TaskService } from './task.service';
     CommonModule,
     EffectsModule.forFeature([TaskEffects]),
     StoreModule.forFeature('tasks', tasksReducer),
-    RouterModule.forChild(TASK_ROUTES)
+    RouterModule.forChild(TASK_ROUTES),
+    MaterialModule
   ],
   declarations: [
     TaskDashboardComponent,
