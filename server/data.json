@@ -7,7 +7,7 @@
       "birthday": "1996-06-26",
       "sex": "female",
       "score": 0,
-      "image": "/assets/images/0.jpg"
+      "image": "/assets/images/placeholder.png"
     },
     {
       "id": 1,
@@ -16,7 +16,7 @@
       "birthday": "1993-04-19",
       "sex": "male",
       "score": 0,
-      "image": "/assets/images/0.jpg"
+      "image": "/assets/images/placeholder.png"
     },
     {
       "id": 2,
@@ -25,7 +25,7 @@
       "birthday": "1994-12-24",
       "sex": "female",
       "score": 0,
-      "image": "/assets/images/0.jpg"
+      "image": "/assets/images/placeholder.png"
     },
     {
       "id": 3,
@@ -34,7 +34,7 @@
       "birthday": "1994-01-13",
       "sex": "female",
       "score": 0,
-      "image": "/assets/images/0.jpg"
+      "image": "/assets/images/placeholder.png"
     }
   ],
   "tasks": [

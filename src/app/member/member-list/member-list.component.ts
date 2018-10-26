@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Member } from '../models/member';
 import { MemberService } from '../member.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-member-list',
@@ -16,7 +17,7 @@ export class MemberListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.members$ = this.memberService.getMembers();
+    this.members$ = this.memberService.getMembers().pipe(tap(console.log));
   }
 
   trackByMemberId(index, member) {

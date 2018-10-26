@@ -11,17 +11,15 @@ import { RouterModule } from '@angular/router';
 import { MEMBER_ROUTES } from './member.routes';
 import { MemberComponent } from './member.component';
 import { MaterialModule } from '../material.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(MEMBER_ROUTES)
-    CommonModule,
-    BrowserAnimationsModule,
+    RouterModule.forChild(MEMBER_ROUTES),
     MaterialModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule,
   ],
   declarations: [
     MemberListComponent,
