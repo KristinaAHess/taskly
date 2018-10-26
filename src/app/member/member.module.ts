@@ -6,6 +6,7 @@ import { MemberEditComponent } from './member-edit/member-edit.component';
 import { MemberCreateComponent } from './member-create/member-create.component';
 import { MemberDashboardComponent } from './member-dashboard/member-dashboard.component';
 import { MemberFormTemplateComponent } from './member-form-template/member-form-template.component';
+import { MemberService } from './member.service';
 import { RouterModule } from '@angular/router';
 import { MEMBER_ROUTES } from './member.routes';
 import { MemberComponent } from './member.component';
@@ -22,7 +23,12 @@ import { MemberComponent } from './member.component';
     MemberCreateComponent,
     MemberDashboardComponent,
     MemberFormTemplateComponent,
-    MemberComponent]
+    MemberFormTemplateComponent,
+    MemberComponent
+  ],
+  providers: [
+    MemberService
+  ]
 })
 export class MemberModule {
 }
