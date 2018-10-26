@@ -12,7 +12,7 @@ import { DashboardTemplateComponent } from './dashboard/dashboard-template/dashb
 import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import {SharedModule} from './shared/shared.module';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
