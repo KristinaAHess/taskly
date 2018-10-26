@@ -44,7 +44,7 @@
       "points": 4,
       "date": "2018-10-27",
       "repetitionAfterDays": 14,
-      "icon": "",
+      "icon": "/assets/icons/cleaning.png",
       "preferredBy": []
     },
     {
@@ -53,7 +53,7 @@
       "points": 3,
       "date": "2018-10-28",
       "repetitionAfterDays": 7,
-      "icon": "",
+      "icon": "/assets/icons/cleaning.png",
       "preferredBy": []
     },
     {
@@ -62,7 +62,7 @@
       "points": 1,
       "date": "2018-10-27",
       "repetitionAfterDays": 4,
-      "icon": "",
+      "icon": "/assets/icons/cleaning.png",
       "preferredBy": []
     },
     {
@@ -71,7 +71,7 @@
       "points": 1,
       "date": "2018-10-27",
       "repetitionAfterDays": 8,
-      "icon": "",
+      "icon": "/assets/icons/cleaning.png",
       "preferredBy": []
     },
     {
@@ -80,7 +80,7 @@
       "points": 2,
       "date": "2018-10-27",
       "repetitionAfterDays": 3,
-      "icon": "",
+      "icon": "/assets/icons/cleaning.png",
       "preferredBy": []
     }
   ]

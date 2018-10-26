@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Member } from '../../member/models/member';
-import { MemberService } from '../../member/member.service';
-import { tap } from 'rxjs/operators';
+import { LoadMembersAction } from '../../state/member/member.actions';
+import { select, Store } from '@ngrx/store';
+import { MembersQuery } from '../../state/member/member.reducer';
+import { ApplicationState } from '../../state/app.state';
 
 @Component({
   selector: 'app-member-list',
@@ -13,11 +15,12 @@ export class MemberListComponent implements OnInit {
 
   members$: Observable<Array<Member>>;
 
-  constructor(private memberService: MemberService) {
+  constructor(private store: Store<ApplicationState>) {
   }
 
   ngOnInit() {
-    this.members$ = this.memberService.getMembers().pipe(tap(console.log));
+    this.store.dispatch(new LoadMembersAction());
+    this.members$ = this.store.pipe(select(MembersQuery.getMembers));
   }
 
   trackByMemberId(index, member) {
