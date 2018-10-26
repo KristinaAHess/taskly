@@ -8,3 +8,22 @@
   border-bottom: 1px solid #ddd;
   text-decoration: none;
 }
+
+mat-toolbar{
+  margin-bottom: 5px;
+}
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  color: white;
+  flex: 1 1 auto;
+}
+
+.taskly-link {
+  font-weight: lighter;
+  text-emphasis: none;
+  color: white;
+  text-decoration: none;
+  margin-left: 10px;
+}

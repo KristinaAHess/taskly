@@ -1,3 +1,4 @@
+import { MaterialModule } from './material.module';
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,12 +23,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MaterialModule,
     HttpClientModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     SharedModule,
     RouterModule.forRoot(APP_ROUTES, { preloadingStrategy: PreloadAllModules } ),
-    HttpClientModule,
   ],
   providers: [
     {provide: API_ENDPOINT, useValue: 'http://localhost:3000'},

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'taskly';
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon(
+        'checklist',
+        sanitizer.bypassSecurityTrustResourceUrl('assets/icons/checklist.svg'));
+  }
 }
