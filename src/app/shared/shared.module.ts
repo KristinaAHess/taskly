@@ -16,7 +16,7 @@ import {MemberService} from '../member/member.service';
       useFactory: adapterFactory
     }),
     RouterModule,
-    MaterialModule,
+    MaterialModule
   ],
   declarations: [
     TaskCalendarComponent,

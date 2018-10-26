@@ -1,9 +1,15 @@
-<mat-list>
-  <a mat-list-item
-     [routerLink]="['/tasks', task.id]"
-     *ngFor="let task of tasks; trackBy:trackByTaskId"
-     title="View {{task.description}} details">
-    <img mat-list-avatar [src]="task.icon" alt="Picture of {{task.description}}">
-    <h3 mat-line>{{task.description}}</h3>
+<div  class="list-container">
+  <mat-list>
+    <a mat-list-item
+      [routerLink]="['/tasks', task.id]"
+      *ngFor="let task of tasks; trackBy:trackByTaskId"
+      title="View {{task.description}} details">
+      <img mat-list-avatar [src]="task.icon" alt="Picture of {{task.description}}">
+      <h3 mat-line>{{task.description}}</h3>
+    </a>
+  </mat-list>
+  <a routerLink="/tasks/create" mat-fab title="Add a new contact" class="trm-floating-button">
+    <mat-icon class="md-24"><span style="font-size: xx-large">+</span></mat-icon>
   </a>
-</mat-list>
+</div>
+

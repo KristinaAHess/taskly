@@ -1,10 +1,13 @@
-<mat-list>
-  <a mat-list-item
-     [routerLink]="['/members', member.id]"
-     *ngFor="let member of members$ | async; trackBy:trackByMemberId"
-     title="View {{member.name}} details"
-     (click)="selectUser(member.id)">
-    <img mat-list-avatar [src]="member.image" alt="Picture of {{member.name}}">
-    <h3 mat-line>{{member.name}}</h3>
+<div class="list-container">
+  <mat-list>
+    <a mat-list-item [routerLink]="['/members', member.id]" *ngFor="let member of members$ | async; trackBy:trackByMemberId"
+      title="View {{member.name}} details" (click)="selectUser(member.id)">
+      <img mat-list-avatar [src]="member.image" alt="Picture of {{member.name}}">
+      <h3 mat-line>{{member.name}}</h3>
+    </a>
+  </mat-list>
+  <a routerLink="/members/create" mat-fab title="Add a new contact" class="trm-floating-button">
+    <mat-icon class="md-24"><span style="font-size: xx-large">+</span></mat-icon>
   </a>
-</mat-list>
+</div>
+
