@@ -1,8 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
 import { Task } from '../models/task';
-import { TaskService } from '../task.service';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-task-list',
@@ -10,14 +7,13 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
+  @Input()
+  tasks: Array<Task>;
 
-  tasks$: Observable<Array<Task>>;
-
-  constructor(private taskService: TaskService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.tasks$ = this.taskService.getTasks().pipe(tap(console.log));
   }
 
   trackByTaskId(index, task) {

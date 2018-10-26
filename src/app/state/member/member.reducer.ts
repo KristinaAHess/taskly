@@ -1,4 +1,4 @@
-import { MembersActions, MemberActionTypes } from './member.actions';
+import { MemberActionTypes, MembersActions } from './member.actions';
 import { Member } from 'src/app/member/models/member';
 import { ApplicationState } from '../app.state';
 import { createSelector } from '@ngrx/store';
