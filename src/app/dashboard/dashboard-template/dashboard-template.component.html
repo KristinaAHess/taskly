@@ -1,3 +1,8 @@
-<p>
-  dashboard works!
-</p>
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true">
+    <ng-content select="[list]"></ng-content>
+  </mat-drawer>
+  <div class="main-content">
+    <ng-content select="[content]"></ng-content>
+  </div>
+</mat-drawer-container>

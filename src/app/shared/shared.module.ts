@@ -6,6 +6,7 @@ import {CalendarModule, DateAdapter} from 'angular-calendar';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material.module';
+import {MemberService} from '../member/member.service';
 
 @NgModule({
   imports: [
@@ -24,6 +25,9 @@ import { MaterialModule } from '../material.module';
   exports: [
     TaskCalendarComponent,
     MemberListComponent,
+  ],
+  providers: [
+    MemberService
   ]
 })
 export class SharedModule { }
