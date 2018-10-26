@@ -31,7 +31,7 @@ export class MemberEffects {
     ofType(MemberActionTypes.UPDATE_MEMBER),
     map((action: UpdateMemberAction) => action.payload),
     concatMap((member: Member) => this.membersService.updateMember(member)),
-    // tap((member: Member) => this.router.navigate(['/members', member.id])),
+    tap((member: Member) => this.router.navigate(['/members', member.id])),
     map((member: Member) => new UpdateMemberSuccessAction(member))
   );
 
@@ -39,16 +39,14 @@ export class MemberEffects {
     ofType(MemberActionTypes.ADD_MEMBER),
     map((action: UpdateMemberAction) => action.payload),
     concatMap((member: Member) => this.membersService.updateMember(member)),
-    // tap((member: Member) => this.router.navigate(['/members', member.id])),
+    tap((member: Member) => this.router.navigate(['/members', member.id])),
     map((member: Member) => new AddMemberSuccessAction(member))
   );
 
-  /*
   @Effect() removeMember$ = this.actions$.pipe(
     ofType(MemberActionTypes.REMOVE_MEMBER),
     map((action: RemoveMemberAction) => action.payload),
-    concatMap((mameber: Member) => this.membersService.removeMember(member)),
+    concatMap((member: Member) => this.membersService.removeMember(String(member.id))),
     map((member: Member) => new RemoveMemberSuccessAction(member))
   );
-  */
 }

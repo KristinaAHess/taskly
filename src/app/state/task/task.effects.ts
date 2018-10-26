@@ -31,7 +31,7 @@ export class TaskEffects {
     ofType(TaskActionTypes.UPDATE_TASK),
     map((action: UpdateTaskAction) => action.payload),
     concatMap((task: Task) => this.tasksService.updateTask(task)),
-    // tap((task: Task) => this.router.navigate(['/tasks', task.id])),
+    tap((task: Task) => this.router.navigate(['/tasks', task.id])),
     map((task: Task) => new UpdateTaskSuccessAction(task))
   );
 
@@ -39,16 +39,14 @@ export class TaskEffects {
     ofType(TaskActionTypes.ADD_TASK),
     map((action: UpdateTaskAction) => action.payload),
     concatMap((task: Task) => this.tasksService.updateTask(task)),
-    // tap((task: Task) => this.router.navigate(['/tasks', task.id])),
+    tap((task: Task) => this.router.navigate(['/tasks', task.id])),
     map((task: Task) => new AddTaskSuccessAction(task))
   );
 
-  /*
   @Effect() removeTask$ = this.actions$.pipe(
     ofType(TaskActionTypes.REMOVE_TASK),
     map((action: RemoveTaskAction) => action.payload),
-    concatMap((mameber: Task) => this.tasksService.removeTask(task)),
+    concatMap((task: Task) => this.tasksService.removeTask(String(task.id))),
     map((task: Task) => new RemoveTaskSuccessAction(task))
   );
-  */
 }
