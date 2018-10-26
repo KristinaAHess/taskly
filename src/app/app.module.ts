@@ -9,6 +9,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { DashboardOverviewComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
 import { DashboardTemplateComponent } from './dashboard/dashboard-template/dashboard-template.component';
+import {SharedModule} from './shared/shared.module';
+import {CalendarModule, DateAdapter} from 'angular-calendar';
+import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,7 @@ import { DashboardTemplateComponent } from './dashboard/dashboard-template/dashb
   ],
   imports: [
     BrowserModule,
+    SharedModule,
     RouterModule.forRoot(APP_ROUTES, { preloadingStrategy: PreloadAllModules } ),
   ],
   providers: [
