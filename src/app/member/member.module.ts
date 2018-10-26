@@ -18,6 +18,7 @@ import { MemberComponent } from './member.component';
 import { MEMBER_ROUTES } from './member.routes';
 import { MemberService } from './member.service';
 import {ReactiveFormsModule} from '@angular/forms';
+import { ImageUploadModule } from 'angular2-image-upload';
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     StoreModule.forFeature('members', membersReducer),
     RouterModule.forChild(MEMBER_ROUTES),
     MaterialModule,
+    ImageUploadModule,
     SharedModule,
     ReactiveFormsModule,
   ],

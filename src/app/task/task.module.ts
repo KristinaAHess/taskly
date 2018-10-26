@@ -1,3 +1,4 @@
+import { ImageUploadModule } from 'angular2-image-upload';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -25,7 +26,8 @@ import { TaskExistsGuard } from './task-exists.guard';
     EffectsModule.forFeature([TaskEffects]),
     StoreModule.forFeature('tasks', tasksReducer),
     RouterModule.forChild(TASK_ROUTES),
-    MaterialModule
+    MaterialModule,
+    ImageUploadModule
   ],
   declarations: [
     TaskDashboardComponent,
