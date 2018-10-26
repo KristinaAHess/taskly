@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Member } from '../models/member';
-import { MemberService } from '../member.service';
+import { Member } from '../../member/models/member';
+import { MemberService } from '../../member/member.service';
 import { tap } from 'rxjs/operators';
 
 @Component({

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MemberListComponent } from './member-list/member-list.component';
+import { MemberListComponent } from '../shared/member-list/member-list.component';
 import { MemberDetailsComponent } from './member-details/member-details.component';
 import { MemberEditComponent } from './member-edit/member-edit.component';
 import { MemberCreateComponent } from './member-create/member-create.component';
@@ -12,17 +12,17 @@ import { MEMBER_ROUTES } from './member.routes';
 import { MemberComponent } from './member.component';
 import { MaterialModule } from '../material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(MEMBER_ROUTES),
     MaterialModule,
-    RouterModule,
     HttpClientModule,
+    SharedModule
   ],
   declarations: [
-    MemberListComponent,
     MemberDetailsComponent,
     MemberEditComponent,
     MemberCreateComponent,
