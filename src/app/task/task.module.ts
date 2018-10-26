@@ -17,6 +17,7 @@ import { TASK_ROUTES } from './task.routes';
 import { TaskService } from './task.service';
 import { MaterialModule } from '../material.module';
 import { TaskExistsGuard } from './task-exists.guard';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { TaskExistsGuard } from './task-exists.guard';
     EffectsModule.forFeature([TaskEffects]),
     StoreModule.forFeature('tasks', tasksReducer),
     RouterModule.forChild(TASK_ROUTES),
-    MaterialModule
+    MaterialModule,
+    SharedModule
   ],
   declarations: [
     TaskDashboardComponent,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Member } from '../../member/models/member';
-import { LoadMembersAction, SelectMemberAction } from '../../state/member/member.actions';
+import { LoadMembersAction } from '../../state/member/member.actions';
 import { select, Store } from '@ngrx/store';
 import { MembersQuery } from '../../state/member/member.reducer';
 import { ApplicationState } from '../../state/app.state';
