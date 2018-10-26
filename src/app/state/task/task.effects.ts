@@ -7,19 +7,21 @@ import { Task } from 'src/app/task/models/task';
 import { TaskService } from './../../task/task.service';
 import {
   AddTaskSuccessAction,
+  CalculateEventsSuccessAction,
   LoadTasksSuccessAction,
-  TaskActionTypes,
   RemoveTaskAction,
   RemoveTaskSuccessAction,
+  TaskActionTypes,
   UpdateTaskAction,
-  UpdateTaskSuccessAction,
+  UpdateTaskSuccessAction
 } from './task.actions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskEffects {
-  constructor(private actions$: Actions, private tasksService: TaskService, private router: Router) {}
+  constructor(private actions$: Actions, private tasksService: TaskService, private eventsService: EventService, private router: Router) {
+  }
 
   @Effect() getTasks$ = this.actions$.pipe(
     ofType(TaskActionTypes.LOAD_TASKS),
@@ -48,5 +50,11 @@ export class TaskEffects {
     map((action: RemoveTaskAction) => action.payload),
     concatMap((task: Task) => this.tasksService.removeTask(String(task.id))),
     map((task: Task) => new RemoveTaskSuccessAction(task))
+  );
+
+  @Effect() calculateEvents$ = this.actions$.pipe(
+    ofType(TaskActionTypes.CALCULATE_EVENTS),
+    switchMap(payload => this.eventService.calculateEvents()),
+    map((events: Array<CalendarEvent>) => new CalculateEventsSuccessAction(events))
   );
 }

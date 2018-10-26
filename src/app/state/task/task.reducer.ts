@@ -7,12 +7,14 @@ export interface TasksState {
   entities: { [id: number]: Task };
   selectedTaskId: number;
   loaded: boolean;
+  events: Array<CalendarEvent>;
 }
 
 const INITIAL_TASKS_STATE = {
   entities: {},
   selectedTaskId: -1,
-  loaded: false
+  loaded: false,
+  events: []
 };
 
 export function tasksReducer(state: TasksState = INITIAL_TASKS_STATE, action: TasksActions): TasksState {
@@ -22,9 +24,9 @@ export function tasksReducer(state: TasksState = INITIAL_TASKS_STATE, action: Ta
         ...state,
         entities: action.payload.reduce(
           (taskEntities, task) => {
-            return { ...taskEntities, [task.id]: task };
+            return {...taskEntities, [task.id]: task};
           },
-          { ...state.entities }
+          {...state.entities}
         ),
         loaded: true
       };
@@ -34,13 +36,13 @@ export function tasksReducer(state: TasksState = INITIAL_TASKS_STATE, action: Ta
       return {
         ...state,
         entities: !inStore
-          ? { ...state.entities, [action.payload.id]: action.payload }
+          ? {...state.entities, [action.payload.id]: action.payload}
           : state.entities
       };
     case TaskActionTypes.SELECT_TASK:
-      return { ...state, selectedTaskId: action.payload };
+      return {...state, selectedTaskId: action.payload};
     case TaskActionTypes.REMOVE_TASK_SUCCESS:
-      const { [action.payload.id]: removedTask, ...entities } = state.entities;
+      const {[action.payload.id]: removedTask, ...entities} = state.entities;
 
       return {
         ...state,
@@ -48,7 +50,9 @@ export function tasksReducer(state: TasksState = INITIAL_TASKS_STATE, action: Ta
       };
       break;
     case TaskActionTypes.UPDATE_TASK_SUCCESS:
-      return { ...state, entities: { ...state.entities, [action.payload.id]: action.payload }};
+      return {...state, entities: {...state.entities, [action.payload.id]: action.payload}};
+    case TaskActionTypes.CALCULATE_EVENTS_SUCCESS:
+      return {...state, events: {payload}};
     default:
       return state;
   }

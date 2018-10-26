@@ -18,6 +18,8 @@ import { TaskService } from './task.service';
 import { MaterialModule } from '../material.module';
 import { TaskExistsGuard } from './task-exists.guard';
 import { SharedModule } from '../shared/shared.module';
+import { EventService } from './event.service';
+import { EventExistsGuard } from './event-exists.guard';
 
 
 @NgModule({
@@ -40,7 +42,9 @@ import { SharedModule } from '../shared/shared.module';
   ],
   providers: [
     TaskService,
-    TaskExistsGuard
+    TaskExistsGuard,
+    EventExistsGuard,
+    EventService
   ]
 })
 export class TaskModule {
