@@ -13,7 +13,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import {SharedModule} from './shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MaterialModule} from './material.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import {MaterialModule} from './material.module';
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     SharedModule,
-    MaterialModule,
     RouterModule.forRoot(APP_ROUTES, { preloadingStrategy: PreloadAllModules } ),
   ],
   providers: [
