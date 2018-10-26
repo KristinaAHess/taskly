@@ -1,3 +1,4 @@
+import { MaterialModule } from './material.module';
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -24,6 +25,7 @@ import {SharedModule} from './shared/shared.module';
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     SharedModule,
+    MaterialModule,
     RouterModule.forRoot(APP_ROUTES, { preloadingStrategy: PreloadAllModules } ),
     HttpClientModule,
   ],

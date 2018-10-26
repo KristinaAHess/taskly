@@ -1,3 +1,16 @@
-<h1>Hier kommt ein Header hin</h1>
+<mat-toolbar color="primary">
+  <!--<mat-icon>assignment-turned-in</mat-icon>
+  <span>Taskly</span>
+  <a [routerLink]="['/members']">Members</a>
+  <a [routerLink]="['/tasks']" >Tasks</a>-->
+  <a class="fill-remaining-space" [routerLink]="['']" routerLinkActive="router-link-active">
+    <mat-icon svgIcon="checklist"></mat-icon>
+  </a>
+  <span class="fill-remaining-space">Taskly</span>
+  <div class="float-right">
+    <a class="taskly-link" [routerLink]="['/members']" routerLinkActive="router-link-active">Members</a>
+    <a class="taskly-link" [routerLink]="['/tasks']" routerLinkActive="router-link-active">Tasks</a>
+  </div>
+</mat-toolbar>
 <router-outlet></router-outlet>
 
