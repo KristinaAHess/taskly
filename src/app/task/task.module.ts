@@ -12,12 +12,18 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TASK_ROUTES } from './task.routes';
 import { TaskService } from './task.service';
 import { TaskComponent } from './task.component';
+import {CalendarModule, DateAdapter} from 'angular-calendar';
+import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
 
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(TASK_ROUTES)
+    RouterModule.forChild(TASK_ROUTES),
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory
+    })
   ],
   declarations: [
     TaskCalendarComponent,
