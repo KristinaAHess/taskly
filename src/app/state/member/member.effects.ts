@@ -24,7 +24,6 @@ export class MemberEffects {
   @Effect() getMembers$ = this.actions$.pipe(
     ofType(MemberActionTypes.LOAD_MEMBERS),
     switchMap(payload => this.membersService.getMembers()),
-    tap(console.log),
     map((members: Array<Member>) => new LoadMembersSuccessAction(members))
   );
 

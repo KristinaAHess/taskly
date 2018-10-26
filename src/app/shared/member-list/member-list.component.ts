@@ -17,7 +17,7 @@ export class MemberListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.members$ = this.memberService.getMembers().pipe(tap(console.log));
+    this.members$ = this.memberService.getMembers();
   }
 
   trackByMemberId(index, member) {

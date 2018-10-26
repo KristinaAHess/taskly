@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { API_ENDPOINT } from '../app.tokens';
 import { Observable } from 'rxjs';
 import { Member } from './models/member';
-import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class MemberService {
@@ -16,11 +15,7 @@ export class MemberService {
   }
 
   getMembers(): Observable<Array<Member>> {
-    console.log('getMembers');
-    return this.http.get<Member[]>(`${this.apiEndpoint}/members`)
-      .pipe(
-        tap(console.log)
-    );
+    return this.http.get<Member[]>(`${this.apiEndpoint}/members`);
   }
 
   updateMember(member: Member): Observable<Member> {
