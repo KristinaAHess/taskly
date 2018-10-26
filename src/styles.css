@@ -5,6 +5,10 @@
 
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
+html, mat-drawer-container, mat-drawer-content, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
 }
