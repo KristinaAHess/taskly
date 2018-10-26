@@ -1,4 +1,11 @@
+import { LoadTasksAction, SelectTaskAction } from './../../state/task/task.actions';
+import { Task } from 'src/app/task/models/task';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Store, select } from '@ngrx/store';
+import { ApplicationState } from 'src/app/state/app.state';
+import { TasksQuery } from 'src/app/state/task/task.reducer';
 
 @Component({
   selector: 'app-task-details',
@@ -7,9 +14,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskDetailsComponent implements OnInit {
 
-  constructor() { }
+  task$: Observable<Task>;
+
+  constructor(private route: ActivatedRoute, private store: Store<ApplicationState>) { }
 
   ngOnInit() {
+    const id = this.route.snapshot.paramMap.get('id');
+    this.store.dispatch(new LoadTasksAction());
+    this.store.dispatch(new SelectTaskAction(+id));
+    this.task$ = this.store.pipe(select(TasksQuery.getSelectedTask));
   }
-
 }
