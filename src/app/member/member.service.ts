@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { API_ENDPOINT } from '../app.tokens';
 import { Observable } from 'rxjs';
 import { Member } from './models/member';
-import { map } from 'rxjs/operators';
 
 @Injectable()
 export class MemberService {
