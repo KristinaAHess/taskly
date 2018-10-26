@@ -1,29 +1,33 @@
 <form [formGroup]="form">
-  <div>
-    <label for="name" class="label-size">Name:</label>
-    <input formControlName="name" id=name type="text" class="form-control">
-  </div>
+  <div class="container-fluid">
+    <div>
+      <label for="name" class="label-size">Name:</label>
+      <input formControlName="name" id=name type="text" class="form-control">
+    </div>
 
-  <div>
-    <label for="nickname" class="label-size">Nickname:</label>
-    <input formControlName="nickname" id="nickname" type="text" class="form-control">
-  </div>
+    <div>
+      <label for="nickname" class="label-size">Nickname:</label>
+      <input formControlName="nickname" id="nickname" type="text" class="form-control">
+    </div>
 
-  <div>
-    <label for="birthday" class="label-size">Birthday:</label>
-    <input formControlName="birthday" id="birthday" type="date" class="form-control">
-  </div>
+    <div>
+      <label for="birthday" class="label-size">Birthday:</label>
+      <input formControlName="birthday" id="birthday" type="date" class="form-control">
+    </div>
 
-  <div>
-    <label for="sex" class="label-size">Sex:</label>
-    <select formControlName="sex" id="sex" class="form-control">
-      <option value={{sexEnum.FEMALE}}>{{sexEnum.FEMALE}}</option>
-      <option value={{sexEnum.MALE}}>{{sexEnum.MALE}}</option>
-    </select>
-  </div>
+    <div>
+      <label for="sex" class="label-size">Sex:</label>
+      <select formControlName="sex" id="sex" class="form-control">
+        <option value={{sexEnum.FEMALE}}>{{sexEnum.FEMALE}}</option>
+        <option value={{sexEnum.MALE}}>{{sexEnum.MALE}}</option>
+      </select>
+    </div>
 
-  <div>
-    <label for="image" class="label-size">Image:</label>
-    <input formControlName="image" id="image" type="text" class="form-control">
+    <div>
+      <label for="image" class="label-size">Image:</label>
+      <input formControlName="image" id="image" type="file" accept="image/png, image/jpeg">
+    </div>
+
+    <button (click)="saveMember()">Save</button>
   </div>
 </form>
