@@ -12,6 +12,7 @@ import { DashboardTemplateComponent } from './dashboard/dashboard-template/dashb
 import {SharedModule} from './shared/shared.module';
 import {CalendarModule, DateAdapter} from 'angular-calendar';
 import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,8 @@ import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
     BrowserModule,
     SharedModule,
     RouterModule.forRoot(APP_ROUTES, { preloadingStrategy: PreloadAllModules } ),
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [
     {provide: API_ENDPOINT, useValue: 'http://localhost:3000'},

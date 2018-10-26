@@ -1,17 +1,8 @@
-import {Inject, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {API_ENDPOINT} from '../app.tokens';
-import {Observable} from 'rxjs';
-import {map} from 'rxjs/operators';
-import {Task} from './models/task';
-
-interface TaskResponse {
-  item: Task;
-}
-
-interface TasksResponse {
-  items: Task[];
-}
+import { Inject, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { API_ENDPOINT } from '../app.tokens';
+import { Observable } from 'rxjs';
+import { Task } from './models/task';
 
 @Injectable()
 export class TaskService {
@@ -20,17 +11,18 @@ export class TaskService {
   }
 
   getTask(id: string): Observable<Task> {
-    return this.http.get<TaskResponse>(`${this.apiEndpoint}/tasks/${id}`)
-      .pipe(map(data => data.item));
+    return this.http.get<Task>(`${this.apiEndpoint}/tasks/${id}`);
   }
 
   getTasks(): Observable<Array<Task>> {
-    return this.http.get<TasksResponse>(`${this.apiEndpoint}/tasks`)
-      .pipe(map(data => data.items));
+    return this.http.get<Task[]>(`${this.apiEndpoint}/tasks`);
   }
 
   updateTask(task: Task): Observable<Task> {
-    return this.http.put<TaskResponse>(`${this.apiEndpoint}/tasks/${task.id}`, task)
-      .pipe(map(data => data.item));
+    return this.http.put<Task>(`${this.apiEndpoint}/tasks/${task.id}`, task);
+  }
+
+  removeTask(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiEndpoint}/tasks/${id}`);
   }
 }
