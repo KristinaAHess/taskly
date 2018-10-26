@@ -1,3 +1,4 @@
+import { LoadTasksAction } from './../../state/task/task.actions';
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -18,6 +19,7 @@ export class TaskDashboardComponent implements OnInit {
   constructor(private store: Store<ApplicationState>) { }
 
   ngOnInit() {
+    this.store.dispatch(new LoadTasksAction());
     this.tasks$ = this.store.pipe(select(TasksQuery.getTasks));
   }
 
