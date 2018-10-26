@@ -15,13 +15,13 @@ export class MemberEditComponent implements OnInit {
 
   form: FormGroup;
   sexEnum = Sex;
-  member: Member;
 
   constructor(private fb: FormBuilder,
               private store: Store<ApplicationState>) { }
 
   ngOnInit() {
     this.form = this.fb.group({
+      id: '',
       name: '',
       nickname: '',
       birthday: '',
@@ -29,13 +29,12 @@ export class MemberEditComponent implements OnInit {
       image: '',
     });
     this.store.pipe(select(MembersQuery.getSelectedMember)).subscribe((member) => {
-      //this.form.patchValue(member);
-      console.log(member);
+      this.form.patchValue(member);
     });
   }
 
   saveMember() {
-    console.log(this.form.value);
-    //this.store.dispatch(new UpdateMemberAction(this.form.value));
+    const updatedMember = {...this.form.value};
+    this.store.dispatch(new UpdateMemberAction(updatedMember));
   }
 }
