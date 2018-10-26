@@ -22,6 +22,10 @@ export class TaskService {
     return this.http.put<Task>(`${this.apiEndpoint}/tasks/${task.id}`, task);
   }
 
+  createTask(task: Task): Observable<Task> {
+    return this.http.post<Task>(`${this.apiEndpoint}/tasks`, task);
+  }
+
   removeTask(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiEndpoint}/tasks/${id}`);
   }

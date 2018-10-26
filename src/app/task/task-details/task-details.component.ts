@@ -1,11 +1,10 @@
-import { LoadTasksAction, SelectTaskAction } from './../../state/task/task.actions';
-import { Task } from 'src/app/task/models/task';
-import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Store, select } from '@ngrx/store';
-import { ApplicationState } from 'src/app/state/app.state';
-import { TasksQuery } from 'src/app/state/task/task.reducer';
+import {Task} from 'src/app/task/models/task';
+import {Component, OnInit} from '@angular/core';
+import {Observable} from 'rxjs';
+import {ActivatedRoute, Router} from '@angular/router';
+import {select, Store} from '@ngrx/store';
+import {ApplicationState} from 'src/app/state/app.state';
+import {TasksQuery} from 'src/app/state/task/task.reducer';
 
 @Component({
   selector: 'app-task-details',
