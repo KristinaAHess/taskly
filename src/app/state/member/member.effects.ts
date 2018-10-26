@@ -38,7 +38,7 @@ export class MemberEffects {
   @Effect() addMember$ = this.actions$.pipe(
     ofType(MemberActionTypes.ADD_MEMBER),
     map((action: UpdateMemberAction) => action.payload),
-    concatMap((member: Member) => this.membersService.updateMember(member)),
+    concatMap((member: Member) => this.membersService.addMember(member)),
     tap((member: Member) => this.router.navigate(['/members', member.id])),
     map((member: Member) => new AddMemberSuccessAction(member))
   );
