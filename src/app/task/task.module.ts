@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { TaskCalendarComponent } from './task-calendar/task-calendar.component';
+import { TaskCalendarComponent } from '../shared/task-calendar/task-calendar.component';
 import { TaskCreateComponent } from './task-create/task-create.component';
 import { TaskDashboardComponent } from './task-dashboard/task-dashboard.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
@@ -20,13 +20,8 @@ import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
   imports: [
     CommonModule,
     RouterModule.forChild(TASK_ROUTES),
-    CalendarModule.forRoot({
-      provide: DateAdapter,
-      useFactory: adapterFactory
-    })
   ],
   declarations: [
-    TaskCalendarComponent,
     TaskDashboardComponent,
     TaskListComponent,
     TaskDetailsComponent,
