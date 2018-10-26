@@ -1,3 +1,29 @@
-<p>
-  member-edit works!
-</p>
+<form [formGroup]="form">
+  <div>
+    <label for="name">Name:</label>
+    <input formControlName="name" id=name type="text">
+  </div>
+
+  <div>
+    <label for="nickname">Nickname:</label>
+    <input formControlName="" id="nickname" type="text">
+  </div>
+
+  <div>
+    <label for="birthday">Birthday:</label>
+    <input formControlName="birthday" id="birthday" type="date">
+  </div>
+
+  <div>
+    <label for="sex">Sex:</label>
+    <select formControlName="sex" id="sex">
+      <option value={{sexEnum.FEMALE}}>{{sexEnum.FEMALE}}</option>
+      <option value={{sexEnum.MALE}}>{{sexEnum.MALE}}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="image">Image:</label>
+    <input formControlName="image" id="image" type="text">
+  </div>
+</form>

@@ -9,6 +9,6 @@ export interface Member {
 }
 
 export enum Sex {
-  female,
-  male,
+  FEMALE = 'female',
+  MALE = 'male',
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {FormBuilder, FormGroup} from '@angular/forms';
+import {Sex} from '../models/member';
 
 @Component({
   selector: 'app-member-edit',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemberEditComponent implements OnInit {
 
-  constructor() { }
+  form: FormGroup;
+  sexEnum = Sex;
+
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
+    this.form = this.fb.group({
+      name: '',
+      nickname: '',
+      birthday: '',
+      sex: '',
+      image: '',
+    });
   }
 
 }

@@ -16,6 +16,7 @@ import { MemberComponent } from './member.component';
 import { SharedModule } from '../shared/shared.module';
 import { MEMBER_ROUTES } from './member.routes';
 import { MemberService } from './member.service';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -24,7 +25,8 @@ import { MemberService } from './member.service';
     StoreModule.forFeature('members', membersReducer),
     RouterModule.forChild(MEMBER_ROUTES),
     MaterialModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     MemberDetailsComponent,
