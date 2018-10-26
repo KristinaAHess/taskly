@@ -1,3 +1,5 @@
+import { ROOT_REDUCER } from './state/app.state';
+import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { PreloadAllModules, RouterModule } from '@angular/router';
@@ -7,6 +9,8 @@ import { APP_ROUTES } from './app.routes';
 import { API_ENDPOINT } from './app.tokens';
 import { DashboardOverviewComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
 import { DashboardTemplateComponent } from './dashboard/dashboard-template/dashboard-template.component';
+import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -16,6 +20,9 @@ import { DashboardTemplateComponent } from './dashboard/dashboard-template/dashb
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     RouterModule.forRoot(APP_ROUTES, { preloadingStrategy: PreloadAllModules } ),
   ],
   providers: [

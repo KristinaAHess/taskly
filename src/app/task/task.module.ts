@@ -1,3 +1,4 @@
+import { TaskEffects } from './../state/task/task.effects';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -12,11 +13,16 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TASK_ROUTES } from './task.routes';
 import { TaskService } from './task.service';
 import { TaskComponent } from './task.component';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { tasksReducer } from '../state/task/task.reducer';
 
 
 @NgModule({
   imports: [
     CommonModule,
+    EffectsModule.forFeature([TaskEffects]),
+    StoreModule.forFeature('tasks', tasksReducer),
     RouterModule.forChild(TASK_ROUTES)
   ],
   declarations: [

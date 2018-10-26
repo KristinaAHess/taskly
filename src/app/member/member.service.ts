@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { API_ENDPOINT } from '../app.tokens';
 import { Observable } from 'rxjs';
 import { Member } from './models/member';
-import { map } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 
 interface MemberResponse {
   item: Member;
@@ -25,8 +25,12 @@ export class MemberService {
   }
 
   getMembers(): Observable<Array<Member>> {
+    console.log('getMembers');
     return this.http.get<MembersResponse>(`${this.apiEndpoint}/members`)
-      .pipe(map(data => data.items));
+      .pipe(
+        map(data => data.items),
+        tap(console.log)
+    );
   }
 
   updateMember(member: Member): Observable<Member> {
