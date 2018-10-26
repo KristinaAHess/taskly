@@ -1,21 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { PreloadAllModules, RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import {MemberModule} from './member/member.module';
-import {TaskModule} from './task/task.module';
+import { APP_ROUTES } from './app.routes';
 import { API_ENDPOINT } from './app.tokens';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardOverviewComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
+import { DashboardTemplateComponent } from './dashboard/dashboard-template/dashboard-template.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DashboardComponent
+    DashboardTemplateComponent,
+    DashboardOverviewComponent
   ],
   imports: [
     BrowserModule,
-    MemberModule,
-    TaskModule,
+    RouterModule.forRoot(APP_ROUTES, { preloadingStrategy: PreloadAllModules } ),
   ],
   providers: [
     {provide: API_ENDPOINT, useValue: 'http://localhost:3000'},
