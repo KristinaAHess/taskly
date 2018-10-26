@@ -17,7 +17,7 @@ import { MemberFormTemplateComponent } from './member-form-template/member-form-
 import { MemberComponent } from './member.component';
 import { MEMBER_ROUTES } from './member.routes';
 import { MemberService } from './member.service';
-// import { MembersExistGuard } from './members-exist.guard';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -26,7 +26,8 @@ import { MemberService } from './member.service';
     StoreModule.forFeature('members', membersReducer),
     RouterModule.forChild(MEMBER_ROUTES),
     MaterialModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     MemberDetailsComponent,
@@ -39,7 +40,6 @@ import { MemberService } from './member.service';
   providers: [
     MemberService,
     MemberExistsGuard,
-    // MembersExistGuard
   ]
 })
 export class MemberModule {
