@@ -1,5 +1,1 @@
-<p>
-  task-dashboard works!
-
-  {{ tasks$ | async | json }}
-</p>
+<app-task-list [tasks]="tasks$ | async"></app-task-list>

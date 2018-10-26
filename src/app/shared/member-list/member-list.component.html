@@ -1,6 +1,6 @@
 <mat-list>
   <a mat-list-item
-     [routerLink]="['/member', member.id]"
+     [routerLink]="['/members', member.id]"
      *ngFor="let member of members$ | async; trackBy:trackByMemberId"
      title="View {{member.name}} details">
     <img mat-list-avatar [src]="member.image" alt="Picture of {{member.name}}">
