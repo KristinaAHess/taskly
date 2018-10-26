@@ -27,6 +27,7 @@ export class MemberEditComponent implements OnInit {
       birthday: '',
       sex: '',
       image: '',
+      score: '',
     });
     this.store.pipe(select(MembersQuery.getSelectedMember)).subscribe((member) => {
       this.form.patchValue(member);
