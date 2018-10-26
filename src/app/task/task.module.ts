@@ -1,8 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
-import { TaskCalendarComponent } from '../shared/task-calendar/task-calendar.component';
 import { TaskCreateComponent } from './task-create/task-create.component';
 import { TaskDashboardComponent } from './task-dashboard/task-dashboard.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
@@ -12,14 +10,14 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TASK_ROUTES } from './task.routes';
 import { TaskService } from './task.service';
 import { TaskComponent } from './task.component';
-import {CalendarModule, DateAdapter} from 'angular-calendar';
-import {adapterFactory} from 'angular-calendar/date-adapters/date-fns';
+import { MaterialModule } from '../material.module';
 
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(TASK_ROUTES),
+    MaterialModule
   ],
   declarations: [
     TaskDashboardComponent,

@@ -1,3 +1,9 @@
-<p>
-  task-list works!
-</p>
+<mat-list>
+  <a mat-list-item
+     [routerLink]="['/tasks', task.id]"
+     *ngFor="let task of tasks$ | async; trackBy:trackByTaskId"
+     title="View {{task.name}} details">
+    <img mat-list-avatar [src]="task.icon" alt="Picture of {{task.name}}">
+    <h3 mat-line>{{task.name}}</h3>
+  </a>
+</mat-list>

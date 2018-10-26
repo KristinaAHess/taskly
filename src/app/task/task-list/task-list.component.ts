@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Task } from '../models/task';
+import { TaskService } from '../task.service';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-task-list',
@@ -7,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskListComponent implements OnInit {
 
-  constructor() { }
+  tasks$: Observable<Array<Task>>;
 
-  ngOnInit() {
+  constructor(private taskService: TaskService) {
   }
 
+  ngOnInit() {
+    this.tasks$ = this.taskService.getTasks().pipe(tap(console.log));
+  }
+
+  trackByTaskId(index, task) {
+    return task.id;
+  }
 }
