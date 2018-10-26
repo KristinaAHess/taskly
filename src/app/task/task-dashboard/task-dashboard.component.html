@@ -1,2 +1,5 @@
-<app-task-list [tasks]="tasks$ | async"></app-task-list>
-<router-outlet></router-outlet>
+<app-dashboard-template>
+  <app-task-list list [tasks]="tasks$ | async"></app-task-list>
+  <router-outlet content></router-outlet>
+</app-dashboard-template>
+
