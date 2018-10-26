@@ -17,7 +17,7 @@ import { DashboardTemplateComponent } from './dashboard-template/dashboard-templ
       useFactory: adapterFactory
     }),
     RouterModule,
-    MaterialModule,
+    MaterialModule
   ],
   declarations: [
     TaskCalendarComponent,

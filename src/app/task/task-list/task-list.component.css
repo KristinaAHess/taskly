@@ -1,0 +1,16 @@
+.list-container {
+  position: relative;
+  width: 100%;
+  height: fit-content;
+}
+
+.trm-floating-button {
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+  color: #fff;
+}
+
+/deep/ .mat-fab .mat-button-wrapper {
+  line-height: 20px !important;
+}
