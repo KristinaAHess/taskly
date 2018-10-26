@@ -16,12 +16,9 @@ export class TaskDetailsComponent implements OnInit {
 
   task$: Observable<Task>;
 
-  constructor(private route: ActivatedRoute, private store: Store<ApplicationState>) { }
+  constructor(private store: Store<ApplicationState>) { }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.store.dispatch(new LoadTasksAction());
-    this.store.dispatch(new SelectTaskAction(+id));
     this.task$ = this.store.pipe(select(TasksQuery.getSelectedTask));
   }
 }

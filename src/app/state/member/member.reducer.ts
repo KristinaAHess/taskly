@@ -59,7 +59,7 @@ export namespace MembersQuery {
   export const getSelectedMemberId = (state: ApplicationState) => state.members.selectedMemberId;
   export const getMembersLoaded = (state: ApplicationState) => state.members.loaded;
 
-  export const getMembers = createSelector(getMemberEntities, entities => {
+  export const getMembers = createSelector(getMemberEntities, (entities) => {
     return Object.keys(entities).map(id => entities[id]);
   });
 
