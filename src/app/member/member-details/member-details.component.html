@@ -1,3 +1,22 @@
-<p>
-  member-details works!
-</p>
+<div>
+  <mat-card *ngIf="member$ | async as member">
+    <mat-card-title-group class="fullBleed">
+      <img mat-card-md-image [src]="member?.image || ''">
+      <mat-card-title>{{member?.name}}</mat-card-title>
+      <mat-card-subtitle>Score: {{member?.score}}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      <dl>
+        <dt>Nickname:</dt>
+        <dd>{{member?.nickname || '-'}}</dd>
+        <dt>Birthday:</dt>
+        <dd>{{member?.birthday || '-'}}</dd>
+        <dt>Sex:</dt>
+        <dd>{{member?.sex || '-'}}</dd>
+      </dl>
+    </mat-card-content>
+    <mat-card-actions fxLayout fxLayoutAlign="center center">
+      <!--<a mat-button (click)="edit.emit()" title="Edit {{member?.name}}">Edit</a>-->
+    </mat-card-actions>
+  </mat-card>
+</div>

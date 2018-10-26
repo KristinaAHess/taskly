@@ -1,4 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
-
 /* angular-cli file: src/styles.css */
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+mat-card {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 2em;
+}
+
+mat-card-title-group.fullBleed {
+  background-color: #b1d6fc;
+  padding: 30px;
+  margin-top: -24px;
+  margin-left: -24px;
+  margin-right: -24px;
+  margin-bottom: 24px;
+}
+
+dl {
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0
+}
+
+dt, dd {
+  display: inline-block;
+  margin-top: 1.5em;
+}
+
+dt {
+  float: left;
+  width: 50%;
+  /* adjust the width; make sure the total of both is 100% */
+  padding: 0;
+}
+
+dd {
+  float: left;
+  width: 50%;
+  /* adjust the width; make sure the total of both is 100% */
+  padding: 0;
+  margin-inline-start: 0;
+}
