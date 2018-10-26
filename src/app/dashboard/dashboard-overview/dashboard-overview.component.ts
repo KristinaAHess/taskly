@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ApplicationState } from 'src/app/state/app.state';
+import { Store } from '@ngrx/store';
+import { LoadMembersAction } from 'src/app/state/member/member.actions';
 
 @Component({
   selector: 'app-dashboard-overview',
@@ -7,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardOverviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<ApplicationState>) { }
 
   ngOnInit() {
   }

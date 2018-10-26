@@ -2,8 +2,7 @@
   <a mat-list-item
      [routerLink]="['/members', member.id]"
      *ngFor="let member of members$ | async; trackBy:trackByMemberId"
-     title="View {{member.name}} details"
-     (click)="selectUser(member.id)">
+     title="View {{member.name}} details">
     <img mat-list-avatar [src]="member.image" alt="Picture of {{member.name}}">
     <h3 mat-line>{{member.name}}</h3>
   </a>

@@ -27,8 +27,4 @@ export class MemberListComponent implements OnInit {
     return member.id;
   }
 
-  selectUser(id) {
-    this.store.dispatch(new SelectMemberAction(id));
-  }
-
 }
