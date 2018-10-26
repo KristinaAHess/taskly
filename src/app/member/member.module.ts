@@ -10,11 +10,16 @@ import { MemberService } from './member.service';
 import { RouterModule } from '@angular/router';
 import { MEMBER_ROUTES } from './member.routes';
 import { MemberComponent } from './member.component';
+import { MaterialModule } from '../material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild(MEMBER_ROUTES)
+    RouterModule.forChild(MEMBER_ROUTES),
+    MaterialModule,
+    RouterModule,
+    HttpClientModule,
   ],
   declarations: [
     MemberListComponent,

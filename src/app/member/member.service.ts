@@ -5,14 +5,6 @@ import { Observable } from 'rxjs';
 import { Member } from './models/member';
 import { map } from 'rxjs/operators';
 
-interface MemberResponse {
-  item: Member;
-}
-
-interface MembersResponse {
-  items: Member[];
-}
-
 @Injectable()
 export class MemberService {
 
@@ -20,17 +12,18 @@ export class MemberService {
   }
 
   getMember(id: string): Observable<Member> {
-    return this.http.get<MemberResponse>(`${this.apiEndpoint}/members/${id}`)
-      .pipe(map(data => data.item));
+    return this.http.get<Member>(`${this.apiEndpoint}/members/${id}`);
   }
 
   getMembers(): Observable<Array<Member>> {
-    return this.http.get<MembersResponse>(`${this.apiEndpoint}/members`)
-      .pipe(map(data => data.items));
+    return this.http.get<Member[]>(`${this.apiEndpoint}/members`);
   }
 
   updateMember(member: Member): Observable<Member> {
-    return this.http.put<MemberResponse>(`${this.apiEndpoint}/members/${member.id}`, member)
-      .pipe(map(data => data.item));
+    return this.http.put<Member>(`${this.apiEndpoint}/members/${member.id}`, member);
+  }
+
+  removeMember(id: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiEndpoint}/members/${id}`);
   }
 }

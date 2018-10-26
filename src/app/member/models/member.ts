@@ -5,6 +5,7 @@ export interface Member {
   birthday?: string;
   score: number;
   sex: Sex;
+  image?: string;
 }
 
 export enum Sex {

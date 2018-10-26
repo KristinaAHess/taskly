@@ -1,0 +1,10 @@
+/deep/ mat-list {
+  background-color: white;
+  padding-top: 0!important;
+}
+
+/deep/ mat-list-item,
+/deep/ [mat-list-item] {
+  border-bottom: 1px solid #ddd;
+  text-decoration: none;
+}
