@@ -35,6 +35,15 @@
       "sex": "female",
       "score": 0,
       "image": "/assets/images/placeholder.png"
+    },
+    {
+      "id": 4,
+      "name": "Katja Niklas",
+      "nickname": "Kati",
+      "birthday": "1996-06-26",
+      "sex": "female",
+      "score": 0,
+      "image": "/assets/images/placeholder.png"
     }
   ],
   "tasks": [
