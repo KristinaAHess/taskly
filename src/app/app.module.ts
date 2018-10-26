@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import {SharedModule} from './shared/shared.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MaterialModule} from './material.module';
 
 @NgModule({
   declarations: [
@@ -22,12 +23,12 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    MaterialModule,
     HttpClientModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     SharedModule,
     RouterModule.forRoot(APP_ROUTES, { preloadingStrategy: PreloadAllModules } ),
-    HttpClientModule,
   ],
   providers: [
     {provide: API_ENDPOINT, useValue: 'http://localhost:3000'},
