@@ -7,11 +7,24 @@ import { TaskDetailsComponent } from './task-details/task-details.component';
 import { TaskEditComponent } from './task-edit/task-edit.component';
 import { TaskCreateComponent } from './task-create/task-create.component';
 import { TaskFormTemplateComponent } from './task-form-template/task-form-template.component';
+import { RouterModule } from '@angular/router';
+import { TaskComponent } from './task.component';
+import { TASK_ROUTES } from './task.routes';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(TASK_ROUTES)
   ],
-  declarations: [TaskCalendarComponent, TaskDashboardComponent, TaskListComponent, TaskDetailsComponent, TaskEditComponent, TaskCreateComponent, TaskFormTemplateComponent]
+  declarations: [
+    TaskCalendarComponent,
+    TaskDashboardComponent,
+    TaskListComponent,
+    TaskDetailsComponent,
+    TaskEditComponent,
+    TaskCreateComponent,
+    TaskFormTemplateComponent,
+    TaskComponent
+  ]
 })
 export class TaskModule { }

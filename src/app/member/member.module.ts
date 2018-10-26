@@ -6,10 +6,14 @@ import { MemberEditComponent } from './member-edit/member-edit.component';
 import { MemberCreateComponent } from './member-create/member-create.component';
 import { MemberDashboardComponent } from './member-dashboard/member-dashboard.component';
 import { MemberFormTemplateComponent } from './member-form-template/member-form-template.component';
+import { RouterModule } from '@angular/router';
+import { MEMBER_ROUTES } from './member.routes';
+import { MemberComponent } from './member.component';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(MEMBER_ROUTES)
   ],
   declarations: [
     MemberListComponent,
@@ -17,7 +21,8 @@ import { MemberFormTemplateComponent } from './member-form-template/member-form-
     MemberEditComponent,
     MemberCreateComponent,
     MemberDashboardComponent,
-    MemberFormTemplateComponent]
+    MemberFormTemplateComponent,
+    MemberComponent]
 })
 export class MemberModule {
 }
