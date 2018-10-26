@@ -14,7 +14,6 @@ import {MembersQuery} from '../../state/member/member.reducer';
 export class MemberEditComponent implements OnInit {
 
   form: FormGroup;
-  sexEnum = Sex;
 
   constructor(private fb: FormBuilder,
               private store: Store<ApplicationState>) { }
@@ -34,8 +33,8 @@ export class MemberEditComponent implements OnInit {
     });
   }
 
-  saveMember() {
-    const updatedMember = {...this.form.value};
+  saveMember($event) {
+    const updatedMember = {...$event};
     this.store.dispatch(new UpdateMemberAction(updatedMember));
   }
 }

@@ -22,6 +22,10 @@ export class MemberService {
     return this.http.put<Member>(`${this.apiEndpoint}/members/${member.id}`, member);
   }
 
+  addMember(member: Member): Observable<Member> {
+    return this.http.post<Member>(`${this.apiEndpoint}/members`, member);
+  }
+
   removeMember(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiEndpoint}/members/${id}`);
   }
