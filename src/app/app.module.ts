@@ -5,7 +5,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { ImageUploadModule } from 'angular2-image-upload';
 
 import { AppComponent } from './app.component';
 import { APP_ROUTES } from './app.routes';
@@ -24,7 +23,6 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    ImageUploadModule.forRoot(),
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     SharedModule,
