@@ -25,6 +25,7 @@ export class MemberCreateComponent implements OnInit {
       sex: ['', Validators.required],
       image: '/assets/images/placeholder.png',
       score: 0,
+      color: ''
     });
   }
 
