@@ -4,6 +4,8 @@ import { Action } from '@ngrx/store';
 export enum TaskActionTypes {
   LOAD_TASKS = '[Tasks] Load Tasks',
   LOAD_TASKS_SUCCESS = '[Tasks] Load Tasks Success',
+  LOAD_TASK_BY_ID = '[Tasks] Load Task by id',
+  LOAD_TASK_BY_ID_SUCCESS = '[Tasks] Load Task by id Success',
   ADD_TASK = '[Tasks] Add task',
   ADD_TASK_SUCCESS = '[Tasks] Add task success',
   REMOVE_TASK = '[Tasks] Remove task',
@@ -21,6 +23,18 @@ export class LoadTasksSuccessAction implements Action {
   readonly type = TaskActionTypes.LOAD_TASKS_SUCCESS;
 
   constructor(public payload: Array<Task>) {}
+}
+
+export class LoadTaskByIdAction implements Action {
+  readonly type = TaskActionTypes.LOAD_TASK_BY_ID;
+
+  constructor(public payload: number) {}
+}
+
+export class LoadTaskByIdSuccessAction implements Action {
+  readonly type = TaskActionTypes.LOAD_TASK_BY_ID_SUCCESS;
+
+  constructor(public payload: Task) {}
 }
 
 export class AddTaskAction implements Action {
@@ -68,6 +82,8 @@ export class SelectTaskAction implements Action {
 export type TasksActions =
   | LoadTasksAction
   | LoadTasksSuccessAction
+  | LoadTaskByIdAction
+  | LoadTaskByIdSuccessAction
   | AddTaskAction
   | AddTaskSuccessAction
   | RemoveTaskAction

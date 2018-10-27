@@ -13,6 +13,8 @@ import {
   RemoveTaskSuccessAction,
   UpdateTaskAction,
   UpdateTaskSuccessAction,
+  LoadTaskByIdAction,
+  LoadTaskByIdSuccessAction,
 } from './task.actions';
 
 @Injectable({
@@ -25,6 +27,13 @@ export class TaskEffects {
     ofType(TaskActionTypes.LOAD_TASKS),
     switchMap(payload => this.tasksService.getTasks()),
     map((tasks: Array<Task>) => new LoadTasksSuccessAction(tasks))
+  );
+
+  @Effect() getTaskById$ = this.actions$.pipe(
+    ofType(TaskActionTypes.LOAD_TASK_BY_ID),
+    map((action: LoadTaskByIdAction) => action.payload),
+    switchMap(payload => this.tasksService.getTask(String(payload))),
+    map((task: Task) => new LoadTaskByIdSuccessAction(task))
   );
 
   @Effect() updateTask$ = this.actions$.pipe(

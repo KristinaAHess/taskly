@@ -1,3 +1,4 @@
+import { LoadMemberByIdAction } from 'src/app/state/member/member.actions';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
@@ -13,6 +14,7 @@ import {
   RemoveMemberSuccessAction,
   UpdateMemberAction,
   UpdateMemberSuccessAction,
+  LoadMemberByIdSuccessAction,
 } from './member.actions';
 
 @Injectable({
@@ -25,6 +27,13 @@ export class MemberEffects {
     ofType(MemberActionTypes.LOAD_MEMBERS),
     switchMap(payload => this.membersService.getMembers()),
     map((members: Array<Member>) => new LoadMembersSuccessAction(members))
+  );
+
+  @Effect() getMemberById$ = this.actions$.pipe(
+    ofType(MemberActionTypes.LOAD_MEMBER_BY_ID),
+    map((action: LoadMemberByIdAction) => action.payload),
+    switchMap(payload => this.membersService.getMember(String(payload))),
+    map((member: Member) => new LoadMemberByIdSuccessAction(member))
   );
 
   @Effect() updateMember$ = this.actions$.pipe(

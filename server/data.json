@@ -29,36 +29,9 @@
     },
     {
       "id": 3,
-      "name": "Kristina Heß",
+      "name": "Kristina He�",
       "nickname": "Krissi",
       "birthday": "1994-01-13",
-      "sex": "female",
-      "score": 0,
-      "image": "/assets/images/placeholder.png"
-    },
-    {
-      "id": 4,
-      "name": "Katja Niklas",
-      "nickname": "Kati",
-      "birthday": "1996-06-26",
-      "sex": "female",
-      "score": 0,
-      "image": "/assets/images/placeholder.png"
-    },
-    {
-      "id": 5,
-      "name": "Katja Niklas",
-      "nickname": "Kati",
-      "birthday": "1996-06-26",
-      "sex": "female",
-      "score": 0,
-      "image": "/assets/images/placeholder.png"
-    },
-    {
-      "id": 6,
-      "name": "Katja Niklas",
-      "nickname": "Kati",
-      "birthday": "1996-06-26",
       "sex": "female",
       "score": 0,
       "image": "/assets/images/placeholder.png"
@@ -109,33 +82,6 @@
       "repetitionAfterDays": 3,
       "icon": "/assets/icons/cleaning.png",
       "preferredBy": []
-    },
-    {
-      "id": 4,
-      "description": "Cleaning bathroom",
-      "points": 4,
-      "date": "2018-10-27",
-      "repetitionAfterDays": 14,
-      "icon": "/assets/icons/cleaning.png",
-      "preferredBy": []
-    },
-    {
-      "id": 5,
-      "description": "Cleaning bathroom",
-      "points": 4,
-      "date": "2018-10-27",
-      "repetitionAfterDays": 14,
-      "icon": "/assets/icons/cleaning.png",
-      "preferredBy": []
-    },
-    {
-      "id": 6,
-      "description": "clean",
-      "points": 2,
-      "date": "2018-10-30",
-      "repetitionAfterDays": 7,
-      "image": "",
-      "preferredBy": "1"
     }
   ]
 }
