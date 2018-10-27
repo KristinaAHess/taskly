@@ -20,13 +20,19 @@ import {
   UpdateTaskSuccessAction
 } from './task.actions';
 import { EventService } from '../../task/event.service';
-import { select } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
+import { ApplicationState } from '../app.state';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskEffects {
-  constructor(private actions$: Actions, private tasksService: TaskService, private eventsService: EventService, private router: Router) {
+  constructor(
+    private actions$: Actions,
+    private tasksService: TaskService,
+    private eventsService: EventService,
+    private router: Router,
+    private store: Store<ApplicationState>) {
   }
 
   @Effect() getTasks$ = this.actions$.pipe(
@@ -76,14 +82,14 @@ export class TaskEffects {
   private filterIfLoaded(fn) {
     return source => source.pipe(
       switchMap(payload => this.store.pipe(
-          select(fn),
-          map(loaded => {
-            return {loaded, payload};
-          })
+        select(fn),
+        map(loaded => {
+          return {loaded, payload};
+        })
         )
       ),
-      filter((res: {loaded: boolean, payload: any}) => !res.loaded),
-      map((res: {loaded: boolean, payload: any}) => res.payload)
+      filter((res: { loaded: boolean, payload: any }) => !res.loaded),
+      map((res: { loaded: boolean, payload: any }) => res.payload)
     );
   }
 }

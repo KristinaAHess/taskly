@@ -5,6 +5,7 @@ import { TasksQuery } from '../../state/task/task.reducer';
 import { Observable } from 'rxjs';
 import { CalendarEvent } from 'angular-calendar';
 import { LoadMembersAction } from '../../state/member/member.actions';
+import { LoadTasksAction } from '../../state/task/task.actions';
 
 @Component({
   selector: 'app-dashboard-overview',
@@ -19,6 +20,7 @@ export class DashboardOverviewComponent implements OnInit {
   ngOnInit() {
     this.events$ = this.store.pipe(select(TasksQuery.getEvents));
     this.store.dispatch(new LoadMembersAction());
+    this.store.dispatch(new LoadTasksAction());
   }
 
 }

@@ -8,6 +8,7 @@ import { Member } from '../models/member';
 import { Observable } from 'rxjs';
 import { TasksQuery } from '../../state/task/task.reducer';
 import { CalendarEvent } from 'angular-calendar';
+import { LoadTasksAction } from '../../state/task/task.actions';
 
 @Component({
   selector: 'app-member-details',
@@ -25,6 +26,7 @@ export class MemberDetailsComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.store.dispatch(new LoadMembersAction());
     this.store.dispatch(new SelectMemberAction(+id));
+    this.store.dispatch(new LoadTasksAction());
     this.member$ = this.store.pipe(select(MembersQuery.getSelectedMember));
     this.events$ = this.store.pipe(select(TasksQuery.getEventsforSelectedMember));
   }
