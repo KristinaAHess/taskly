@@ -1,3 +1,5 @@
+import {Member} from '../../member/models/member';
+
 export interface Task {
   id: number;
   description: string;
@@ -6,5 +8,6 @@ export interface Task {
   repetitionAfterDays?: number;
   icon?: string;
   preferredBy?: number;
+  doneBy?: Member;
 }
 

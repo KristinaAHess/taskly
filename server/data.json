@@ -44,12 +44,13 @@
   "tasks": [
     {
       "id": 0,
-      "description": "Cleaning bathroom",
-      "points": 4,
+      "description": "Do shopping (food)",
+      "points": 2,
       "date": "2018-10-27",
-      "repetitionAfterDays": 14,
+      "repetitionAfterDays": 3,
       "icon": "/assets/icons/cleaning.png",
-      "preferredBy": 1
+      "doneBy": null,
+      "preferredBy": ""
     },
     {
       "id": 1,
@@ -58,7 +59,8 @@
       "date": "2018-10-28",
       "repetitionAfterDays": 7,
       "icon": "/assets/icons/cleaning.png",
-      "preferredBy": "1"
+      "doneBy": null,
+      "preferredBy": 1
     },
     {
       "id": 2,
@@ -67,15 +69,17 @@
       "date": "2018-10-27",
       "repetitionAfterDays": 4,
       "icon": "/assets/icons/cleaning.png",
+      "doneBy": null,
       "preferredBy": 3
     },
     {
       "id": 3,
       "description": "Watering flowers",
       "points": 1,
-      "date": "2018-10-27",
+      "date": "2018-10-30",
       "repetitionAfterDays": 8,
       "icon": "/assets/icons/cleaning.png",
+      "doneBy": null,
       "preferredBy": 0
     },
     {
@@ -85,7 +89,8 @@
       "date": "2018-10-27",
       "repetitionAfterDays": 3,
       "icon": "/assets/icons/cleaning.png",
-      "preferredBy": 1
+      "preferredBy": 1,
+      "doneBy": null
     }
   ]
 }

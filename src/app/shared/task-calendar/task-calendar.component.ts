@@ -1,7 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { CalendarEvent } from 'angular-calendar';
-import { Store } from '@ngrx/store';
-import { ApplicationState } from '../../state/app.state';
+import {Component, Input, OnInit} from '@angular/core';
+import {CalendarEvent} from 'angular-calendar';
+import {ApplicationState} from '../../state/app.state';
+import {select, Store} from '@ngrx/store';
+import {MembersQuery} from '../../state/member/member.reducer';
+import {TaskService} from '../../task/task.service';
 
 @Component({
   selector: 'app-task-calendar',
@@ -14,10 +16,13 @@ export class TaskCalendarComponent implements OnInit {
   @Input()
   events: CalendarEvent[];
 
-  constructor(private store: Store<ApplicationState>) {
-  }
+  constructor(private store: Store<ApplicationState>, private taskService: TaskService) { }
 
   ngOnInit() {
+  }
+
+  distributeTasks() {
+    this.store.pipe(select(MembersQuery.getMembers)).subscribe((members) => this.taskService.distributeTasks(members));
   }
 
 }
