@@ -19,7 +19,9 @@ export class EventService {
 
   calculateEvents(): Observable<Array<CalendarEvent>> {
     // todo repeat for repeated dates
-    const tasks$: Observable<Array<Task>> = this.createTaskRepititions(this.store.pipe(select(TasksQuery.getTasks)));
+    // const tasks$: Observable<Array<Task>> = this.createTaskRepititions(this.store.pipe(select(TasksQuery.getTasks)));
+
+    const tasks$: Observable<Array<Task>> = this.store.pipe(select(TasksQuery.getTasks));
 
     return tasks$.pipe(
       flatMap(tasks =>
@@ -27,22 +29,20 @@ export class EventService {
           map(entites => {
             const events: Array<CalendarEvent> = new Array();
             for (const task of tasks) {
-              if (task.doneBy) {
-                const member = entites[task.doneBy.id];
-                if (member) {
-                  events.push(<CalendarEvent> {
-                    start: new Date(task.date),
-                    title: task.description,
-                    allDay: true,
-                    color: {
-                      primary: member.color,
-                      secondary: member.color
-                    }
-                  });
-                }
+              const member = entites[task.preferredBy];
+              if (member) {
+                events.push(<CalendarEvent> {
+                  start: new Date(task.date),
+                  title: task.description,
+                  allDay: true,
+                  color: {
+                    primary: member.color,
+                    secondary: member.color
+                  }
+                });
               }
             }
-            // console.log('events', events);
+            console.log('events', events);
             return events;
           }))
       ));
@@ -50,7 +50,7 @@ export class EventService {
 
   private createTaskRepititions(tasks$: Observable<Array<Task>>): Observable<Array<Task>> {
     return tasks$.pipe(
-      concatMap(tasks => tasks),
+      switchMap(tasks => tasks),
       tap(console.log),
       filter(task => (this.taskIsInThisWeek(task) && !!task.repetitionAfterDays)),
       tap((task) => {

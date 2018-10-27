@@ -91,6 +91,46 @@
       "icon": "/assets/icons/cleaning.png",
       "preferredBy": 1,
       "doneBy": null
+    },
+    {
+      "id": 20,
+      "description": "Do shopping (food)",
+      "points": 2,
+      "date": "2018-10-30",
+      "repetitionAfterDays": 3,
+      "icon": "/assets/icons/cleaning.png",
+      "preferredBy": 1,
+      "doneBy": null
+    },
+    {
+      "id": 21,
+      "description": "Cleaning kitchen",
+      "points": 3,
+      "date": "2018-11-5",
+      "repetitionAfterDays": 7,
+      "icon": "/assets/icons/cleaning.png",
+      "doneBy": null,
+      "preferredBy": 1
+    },
+    {
+      "id": 22,
+      "description": "Bring out garbage",
+      "points": 1,
+      "date": "2018-10-31",
+      "repetitionAfterDays": 4,
+      "icon": "/assets/icons/cleaning.png",
+      "doneBy": null,
+      "preferredBy": 3
+    },
+    {
+      "id": 23,
+      "description": "Watering flowers",
+      "points": 1,
+      "date": "2018-11-8",
+      "repetitionAfterDays": 8,
+      "icon": "/assets/icons/cleaning.png",
+      "doneBy": null,
+      "preferredBy": 0
     }
   ]
 }
