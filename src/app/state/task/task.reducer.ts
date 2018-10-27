@@ -78,6 +78,6 @@ export namespace TasksQuery {
   export const getEventsLoaded = (state: ApplicationState) => state.tasks.eventsLoaded;
   export const getEvents = (state: ApplicationState) => state.tasks.events;
   export const getEventsforSelectedMember = createSelector(getEvents, MembersQuery.getSelectedMember, (events, member) => {
-    return events.filter(event => event.color.primary === member.color);
+    return events.filter(event => event.color && event.color.secondary === member.color);
   });
 }

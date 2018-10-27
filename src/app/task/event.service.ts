@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { ApplicationState } from '../state/app.state';
 import { TasksQuery } from '../state/task/task.reducer';
-import { map } from 'rxjs/operators';
+import { flatMap, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { CalendarEvent } from 'angular-calendar';
 import { Task } from './models/task';
+import { MembersQuery } from '../state/member/member.reducer';
 
 @Injectable({
   providedIn: 'root'
@@ -18,18 +19,24 @@ export class EventService {
     // todo repeat for repeated dates
     const tasks$: Observable<Array<Task>> = this.store.pipe(select(TasksQuery.getTasks));
     return tasks$.pipe(
-      map(tasks => {
-          const events: Array<CalendarEvent> = new Array();
-          for (const task of tasks) {
-            events.push({
-              start: new Date(task.date),
-              title: task.description,
-              allDay: true,
-              // todo color: task.preferredBy[0].color
-            });
-          }
-          return events;
-        }
+      flatMap(tasks =>
+        this.store.pipe(select(MembersQuery.getMemberEntities),
+          map(entites => {
+            const events: Array<CalendarEvent> = new Array();
+            for (const task of tasks) {
+              const member = entites[task.preferredBy];
+              if (member) {
+                events.push(<CalendarEvent> {
+                  start: new Date(task.date),
+                  title: task.description,
+                  allDay: true,
+                  color: {secondary: member.color}
+                });
+              }
+            }
+            console.log(events);
+            return events;
+          }))
       ));
   }
 }
