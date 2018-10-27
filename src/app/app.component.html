@@ -3,12 +3,11 @@
   <span>Taskly</span>
   <a [routerLink]="['/members']">Members</a>
   <a [routerLink]="['/tasks']" >Tasks</a>-->
-  <a class="fill-remaining-space">
-    <mat-icon style="vertical-align: middle" svgIcon="checklist"></mat-icon>
+  <a class="fill-remaining-space taskly-link" [routerLink]="['/']" routerLinkActive="router-link-active">
+    <mat-icon style="vertical-align: middle;" svgIcon="checklist"></mat-icon>
     <span class="spacer">Taskly</span>
   </a>
   <div class="float-right">
-    <a class="taskly-link" [routerLink]="['/']" routerLinkActive="router-link-active">Overview</a>
     <a class="taskly-link" [routerLink]="['/members']" routerLinkActive="router-link-active">Members</a>
     <a class="taskly-link" [routerLink]="['/tasks']" routerLinkActive="router-link-active">Tasks</a>
   </div>
