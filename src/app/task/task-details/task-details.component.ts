@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {select, Store} from '@ngrx/store';
 import {ApplicationState} from 'src/app/state/app.state';
 import {TasksQuery} from 'src/app/state/task/task.reducer';
+import { RemoveTaskAction } from 'src/app/state/task/task.actions';
 
 @Component({
   selector: 'app-task-details',
@@ -23,5 +24,9 @@ export class TaskDetailsComponent implements OnInit {
 
   navigateToEditor() {
     this.router.navigate(['edit'], {relativeTo: this.route});
+  }
+
+  removeTask(task: Task) {
+    this.store.dispatch(new RemoveTaskAction(task));
   }
 }

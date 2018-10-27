@@ -41,7 +41,7 @@ export function tasksReducer(state: TasksState = INITIAL_TASKS_STATE, action: Ta
     case TaskActionTypes.SELECT_TASK:
       return { ...state, selectedTaskId: action.payload };
     case TaskActionTypes.REMOVE_TASK_SUCCESS:
-      const { [action.payload.id]: removedTask, ...entities } = state.entities;
+      const { [action.payload]: removedTask, ...entities } = state.entities;
 
       return {
         ...state,

@@ -1,4 +1,4 @@
-import { LoadMembersAction, SelectMemberAction } from './../../state/member/member.actions';
+import { LoadMembersAction, SelectMemberAction, RemoveMemberAction } from './../../state/member/member.actions';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApplicationState } from 'src/app/state/app.state';
@@ -27,6 +27,10 @@ export class MemberDetailsComponent implements OnInit {
 
   navigateToEditor() {
     this.router.navigate(['edit'], {relativeTo: this.route});
+  }
+
+  removeMember(member: Member) {
+    this.store.dispatch(new RemoveMemberAction(member));
   }
 
 }

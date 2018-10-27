@@ -13,6 +13,10 @@ body {
   margin: 0;
 }
 
+mat-card-actions {
+  text-align: center;
+}
+
 .add-member-or-task {
   background-color: #B819BB;
   color: white;
