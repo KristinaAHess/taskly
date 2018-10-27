@@ -16,6 +16,8 @@
             <dd>{{member?.birthday || '-'}}</dd>
             <dt>Sex:</dt>
             <dd>{{member?.sex || '-'}}</dd>
+            <dt>Color:</dt>
+            <dd [ngStyle]="{'color': member.color}">{{member?.color || '-'}}</dd>
           </dl>
         </mat-tab>
 

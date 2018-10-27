@@ -1,44 +1,65 @@
-<form [formGroup]="form">
-  <div class="container-fluid">
-    <div class="form-margin">
-      <label for="name" class="label-size">Name:</label>
-      <input formControlName="name" id=name type="text" class="form-control"
-             [ngClass]="!form.get('name').valid
+<div>
+  <mat-card>
+    <mat-card-title-group class="fullBleed">
+      <img mat-card-md-image [src]="form.get('image').value || ''">
+      <mat-card-title>{{form.get('name').value}}</mat-card-title>
+    </mat-card-title-group>
+    <mat-card-content>
+
+      <form [formGroup]="form">
+        <div class="container-fluid">
+          <div class="form-margin">
+            <label for="name" class="label-size">Name:</label>
+            <input formControlName="name" id=name type="text" class="form-control"
+                   [ngClass]="!form.get('name').valid
                       && form.get('name').touched ? 'alert-error': ''">
-      <span *ngIf="!form.get('name').valid && form.get('name').touched" class="alert-error-msg">
+            <span *ngIf="!form.get('name').valid && form.get('name').touched" class="alert-error-msg">
         Please fill out the name.
       </span>
-    </div>
+          </div>
 
+          <div class="form-margin">
+            <label for="nickname" class="label-size">Nickname:</label>
+            <input formControlName="nickname" id="nickname" type="text" class="form-control">
+          </div>
 
-    <div class="form-margin">
-      <label for="nickname" class="label-size">Nickname:</label>
-      <input formControlName="nickname" id="nickname" type="text" class="form-control">
-    </div>
+          <div class="form-margin">
+            <label for="birthday" class="label-size">Birthday:</label>
+            <input formControlName="birthday" id="birthday" type="date" class="form-control">
+          </div>
 
-    <div class="form-margin">
-      <label for="birthday" class="label-size">Birthday:</label>
-      <input formControlName="birthday" id="birthday" type="date" class="form-control">
-    </div>
-
-    <div class="form-margin">
-      <label for="sex" class="label-size">Sex:</label>
-      <select formControlName="sex" id="sex" class="form-control"
-              [ngClass]="!form.get('name').valid
+          <div class="form-margin">
+            <label for="sex" class="label-size">Sex:</label>
+            <select formControlName="sex" id="sex" class="form-control"
+                    [ngClass]="!form.get('name').valid
                       && form.get('name').touched ? 'alert-error': ''">
-        <option value={{sexEnum.FEMALE}}>{{sexEnum.FEMALE}}</option>
-        <option value={{sexEnum.MALE}}>{{sexEnum.MALE}}</option>
-      </select>
-      <span *ngIf="!form.get('name').valid && form.get('name').touched" class="alert-error-msg">
+              <option value={{sexEnum.FEMALE}}>{{sexEnum.FEMALE}}</option>
+              <option value={{sexEnum.MALE}}>{{sexEnum.MALE}}</option>
+            </select>
+            <span *ngIf="!form.get('name').valid && form.get('name').touched" class="alert-error-msg">
         Please fill out the sex.
       </span>
-    </div>
+          </div>
 
-    <div class="form-margin">
-      <label for="image" class="label-size">Image:</label>
-      <input id="image" type="file" accept="image/png, image/jpeg" (change)="onSelectFile($event)">
-    </div>
+          <div class="form-margin">
+            <label for="image" class="label-size">Image:</label>
+            <input id="image" type="file" accept="image/png, image/jpeg" (change)="onSelectFile($event)">
+          </div>
 
-    <button (click)="saveMember()">Save</button>
-  </div>
-</form>
+          <div class="form-margin">
+            <label for="color" class="label-size">Color:</label>
+            <input
+              formControlName="color"
+              id="color"
+              type="string"
+              class="colorPicker"
+              [colorPicker]="color"
+              (colorPickerChange)="form.get('color').setValue($event)">
+          </div>
+
+          <button (click)="saveMember()">Save</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
