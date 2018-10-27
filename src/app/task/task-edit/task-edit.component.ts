@@ -4,7 +4,7 @@ import { ApplicationState } from '../../state/app.state';
 import { select, Store } from '@ngrx/store';
 import { MembersQuery } from '../../state/member/member.reducer';
 import { TasksQuery } from '../../state/task/task.reducer';
-import { UpdateTaskAction } from '../../state/task/task.actions';
+import { CalculateEventsAction, UpdateTaskAction } from '../../state/task/task.actions';
 import { Member } from '../../member/models/member';
 
 @Component({
@@ -41,6 +41,7 @@ export class TaskEditComponent implements OnInit {
   saveTask($event) {
     const updatedTask = {...$event};
     this.store.dispatch(new UpdateTaskAction(updatedTask));
+    this.store.dispatch(new CalculateEventsAction());
   }
 
 }

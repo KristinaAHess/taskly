@@ -15,8 +15,6 @@ export class EventsExistsGuard implements CanActivate {
   }
 
   canActivate(route: ActivatedRouteSnapshot) {
-// todo calculate Tasks whenever something changes in the tasks!
-
     return this.store.pipe(
       select(TasksQuery.getEventsLoaded),
       take(1),

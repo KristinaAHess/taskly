@@ -58,7 +58,7 @@
       "date": "2018-10-28",
       "repetitionAfterDays": 7,
       "icon": "/assets/icons/cleaning.png",
-      "preferredBy": 2
+      "preferredBy": "1"
     },
     {
       "id": 2,
