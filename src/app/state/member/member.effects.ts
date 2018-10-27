@@ -66,7 +66,7 @@ export class MemberEffects {
     ofType(MemberActionTypes.REMOVE_MEMBER),
     map((action: RemoveMemberAction) => action.payload),
     concatMap((member: Member) => this.membersService.removeMember(String(member.id))),
-    map((member: Member) => new RemoveMemberSuccessAction(member))
+    map((memberId: string) => new RemoveMemberSuccessAction(memberId))
   );
 
 

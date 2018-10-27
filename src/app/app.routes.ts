@@ -1,3 +1,4 @@
+
 import { Routes } from '@angular/router';
 import { DashboardOverviewComponent } from './dashboard/dashboard-overview/dashboard-overview.component';
 import { EventsExistsGuard } from './task/events-exists-guard.service';
@@ -9,5 +10,5 @@ export const APP_ROUTES: Routes = [
 
   // Wildcard route serves as fallback route and has to be
   // the last defined route in this list.
-  {path: '**', redirectTo: '/'}
+  { path: '**', redirectTo: '/' }
 ];

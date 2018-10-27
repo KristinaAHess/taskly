@@ -41,7 +41,7 @@ export function membersReducer(state: MembersState = INITIAL_MEMBERS_STATE, acti
     case MemberActionTypes.SELECT_MEMBER:
       return { ...state, selectedMemberId: action.payload };
     case MemberActionTypes.REMOVE_MEMBER_SUCCESS:
-      const { [action.payload.id]: removedMember, ...entities } = state.entities;
+      const { [action.payload]: removedMember, ...entities } = state.entities;
 
       return {
         ...state,

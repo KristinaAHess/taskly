@@ -70,7 +70,7 @@ export class TaskEffects {
     ofType(TaskActionTypes.REMOVE_TASK),
     map((action: RemoveTaskAction) => action.payload),
     concatMap((task: Task) => this.tasksService.removeTask(String(task.id))),
-    map((task: Task) => new RemoveTaskSuccessAction(task))
+    map((taskId: string) => new RemoveTaskSuccessAction(taskId))
   );
 
   @Effect() calculateEvents$ = this.actions$.pipe(

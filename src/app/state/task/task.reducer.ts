@@ -28,9 +28,9 @@ export function tasksReducer(state: TasksState = INITIAL_TASKS_STATE, action: Ta
         ...state,
         entities: action.payload.reduce(
           (taskEntities, task) => {
-            return {...taskEntities, [task.id]: task};
+            return { ...taskEntities, [task.id]: task };
           },
-          {...state.entities}
+          { ...state.entities }
         ),
         loaded: true
       };
@@ -41,13 +41,13 @@ export function tasksReducer(state: TasksState = INITIAL_TASKS_STATE, action: Ta
       return {
         ...state,
         entities: !inStore
-          ? {...state.entities, [action.payload.id]: action.payload}
+          ? { ...state.entities, [action.payload.id]: action.payload }
           : state.entities
       };
     case TaskActionTypes.SELECT_TASK:
-      return {...state, selectedTaskId: action.payload};
+      return { ...state, selectedTaskId: action.payload };
     case TaskActionTypes.REMOVE_TASK_SUCCESS:
-      const {[action.payload.id]: removedTask, ...entities} = state.entities;
+      const { [action.payload]: removedTask, ...entities } = state.entities;
 
       return {
         ...state,

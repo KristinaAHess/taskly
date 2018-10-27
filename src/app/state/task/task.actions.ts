@@ -61,7 +61,7 @@ export class RemoveTaskAction implements Action {
 export class RemoveTaskSuccessAction implements Action {
   readonly type = TaskActionTypes.REMOVE_TASK_SUCCESS;
 
-  constructor(public payload: Task) {}
+  constructor(public payload: string) {}
 }
 
 export class UpdateTaskAction implements Action {

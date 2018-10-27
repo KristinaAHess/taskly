@@ -1,14 +1,12 @@
-import { AddTaskAction, LoadTaskByIdAction } from './../state/task/task.actions';
-import { Task } from './models/task';
-import { TasksQuery } from 'src/app/state/task/task.reducer';
-import { TaskService } from './task.service';
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot } from '@angular/router';
-import { Store, select } from '@ngrx/store';
+import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { filter, mapTo } from 'rxjs/operators';
+import { TasksQuery } from 'src/app/state/task/task.reducer';
+
 import { ApplicationState } from '../state/app.state';
 import { SelectTaskAction } from '../state/task/task.actions';
-import { take, switchMap, tap, map, filter, mapTo } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { LoadTaskByIdAction } from './../state/task/task.actions';
 
 @Injectable({
   providedIn: 'root'
