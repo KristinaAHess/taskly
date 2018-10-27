@@ -55,6 +55,8 @@ export class TaskService {
 
         // divide the points by the member count and round up
         const pointsPerPerson = Math.ceil(pointsToDo / members.length);
+        console.log('pointsPerPerson');
+        console.log(pointsPerPerson);
 
         // create empty task list for every member and list with tasks to divide
         // loop again through tasks, looking if tasks is preferred by somebody and add it to his list
@@ -64,6 +66,9 @@ export class TaskService {
           taskListPerPerson.set(member.id, new Array<Task>());
           distributedPointsPerPerson.set(member.id, 0);
         }
+
+        console.log('taskListPerPerson');
+        console.log(taskListPerPerson);
 
         let indexToRemove = new Array<number>();
         for (const taskIndex in tasksOfTheWeek) {
@@ -86,14 +91,26 @@ export class TaskService {
         for (const index of indexToRemove) {
           tasksOfTheWeek.splice(index, 1);
         }
-        indexToRemove = [];
+        console.log('*************After distributing preferred*******************');
+        console.log('tasksOfTheWeek');
+        console.log(tasksOfTheWeek);
+        console.log('indexToRemove');
+        console.log(indexToRemove);
+        console.log('taskListPerPerson');
+        console.log(taskListPerPerson);
+
+        indexToRemove = new Array<number>();
         for (const taskIndex in tasksOfTheWeek) {
           const task = tasksOfTheWeek[taskIndex];
+          let taskAlreadyDistributed = false;
           distributedPointsPerPerson.forEach((points: number, id: number) => {
-            if (points + task.points < pointsPerPerson) {
-              taskListPerPerson.get(id).push(task);
-              distributedPointsPerPerson.set(id, points + task.points);
-              indexToRemove.push(+taskIndex);
+            if (!taskAlreadyDistributed) {
+              if (points + task.points <= pointsPerPerson) {
+                taskListPerPerson.get(id).push(task);
+                distributedPointsPerPerson.set(id, points + task.points);
+                indexToRemove.push(+taskIndex);
+                taskAlreadyDistributed = true;
+              }
             }
           });
         }
@@ -104,16 +121,37 @@ export class TaskService {
         for (const index of indexToRemove) {
           tasksOfTheWeek.splice(index, 1);
         }
+        console.log('*************After distributing per points*******************');
+        console.log('tasksOfTheWeek');
+        console.log(tasksOfTheWeek);
+        console.log('indexToRemove');
+        console.log(indexToRemove);
+        console.log('taskListPerPerson');
+        console.log(taskListPerPerson);
+
+        indexToRemove = new Array<number>();
         for (const taskIndex in tasksOfTheWeek) {
           const task = tasksOfTheWeek[taskIndex];
+          let taskAlreadyDistributed = false;
           distributedPointsPerPerson.forEach((points: number, id: number) => {
-            if (points < pointsPerPerson) {
-              taskListPerPerson.get(id).push(task);
-              distributedPointsPerPerson.set(id, points + task.points);
-              indexToRemove.push(+taskIndex);
+            if (!taskAlreadyDistributed) {
+              if (points < pointsPerPerson) {
+                taskListPerPerson.get(id).push(task);
+                distributedPointsPerPerson.set(id, points + task.points);
+                indexToRemove.push(+taskIndex);
+                taskAlreadyDistributed = true;
+              }
             }
           });
         }
+
+        console.log('*************After distributing rest*******************');
+        console.log('tasksOfTheWeek');
+        console.log(tasksOfTheWeek);
+        console.log('indexToRemove');
+        console.log(indexToRemove);
+        console.log('taskListPerPerson');
+        console.log(taskListPerPerson);
 
         // loop though each member list and assign the member to each task in the list
         taskListPerPerson.forEach((taskList: Array<Task>, id: number) => {
@@ -121,7 +159,7 @@ export class TaskService {
           for (const task of taskList) {
             if (!memberForTask) {
               for (const member of members) {
-                if (member.id = id) {
+                if (member.id === id) {
                   memberForTask = member;
                 }
               }
