@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Member, Sex} from '../models/member';
 import {ApplicationState} from '../../state/app.state';
 import {select, Store} from '@ngrx/store';
@@ -14,7 +14,6 @@ import {MembersQuery} from '../../state/member/member.reducer';
 export class MemberEditComponent implements OnInit {
 
   form: FormGroup;
-  sexEnum = Sex;
 
   constructor(private fb: FormBuilder,
               private store: Store<ApplicationState>) { }
@@ -22,11 +21,11 @@ export class MemberEditComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: '',
-      name: '',
+      name: ['', Validators.required],
       nickname: '',
       birthday: '',
-      sex: '',
-      image: '',
+      sex: ['', Validators.required],
+      image: '/assets/images/placeholder.png',
       score: '',
     });
     this.store.pipe(select(MembersQuery.getSelectedMember)).subscribe((member) => {
@@ -34,8 +33,8 @@ export class MemberEditComponent implements OnInit {
     });
   }
 
-  saveMember() {
-    const updatedMember = {...this.form.value};
+  saveMember($event) {
+    const updatedMember = {...$event};
     this.store.dispatch(new UpdateMemberAction(updatedMember));
   }
 }

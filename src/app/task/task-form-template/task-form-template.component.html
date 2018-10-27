@@ -1,3 +1,57 @@
-<p>
-  task-form-template works!
-</p>
+<form [formGroup]="form">
+  <div class="container-fluid">
+    <div class="form-margin">
+      <label for="description" class="label-size">Description:</label>
+      <input formControlName="description" id="description" type="text" class="form-control"
+             [ngClass]="!form.get('description').valid
+                      && form.get('description').touched ? 'alert-error': ''">
+      <span *ngIf="!form.get('description').valid && form.get('description').touched" class="alert-error-msg">
+        Please fill out the description.
+      </span>
+    </div>
+
+    <div class="form-margin">
+      <label for="points" class="label-size">Points:</label>
+      <input formControlName="points" id="points" type="number" max="5" min="1" step="1" class="form-control"
+             [ngClass]="!form.get('points').valid
+                      && form.get('points').touched ? 'alert-error': ''">
+      <span *ngIf="!form.get('points').valid && form.get('points').touched" class="alert-error-msg">
+        Minimum 1 point, maximum 5 points.
+      </span>
+    </div>
+
+    <div class="form-margin">
+      <label for="date" class="label-size">Date:</label>
+      <input formControlName="date" id="date" type="date" class="form-control"
+             [ngClass]="!form.get('date').valid
+                      && form.get('date').touched ? 'alert-error': ''">
+      <span *ngIf="!form.get('date').valid && form.get('date').touched" class="alert-error-msg">
+        Please fill out the date.
+      </span>
+    </div>
+
+    <div class="form-margin">
+      <label for="repetitionAfterDays" class="label-size">Repetition after days:</label>
+      <input formControlName="repetitionAfterDays" id="repetitionAfterDays" type="number" max="365" min="0" step="1" class="form-control"
+             [ngClass]="!form.get('repetitionAfterDays').valid
+                      && form.get('repetitionAfterDays').touched ? 'alert-error': ''">
+      <span *ngIf="!form.get('repetitionAfterDays').valid && form.get('repetitionAfterDays').touched" class="alert-error-msg">
+        Minimum 0 days, maximum 365 days.
+      </span>
+    </div>
+
+    <div class="form-margin">
+      <label for="image" class="label-size">Image:</label>
+      <input id="image" type="file" accept="image/png, image/jpeg" (change)="onSelectFile($event)">
+    </div>
+
+    <div class="form-margin">
+      <label for="preferredBy" class="label-size">Preferred by:</label>
+      <select formControlName="preferredBy" id="preferredBy" class="form-control">
+        <option *ngFor="let member of members" value={{member.id}}>{{member.name}}</option>
+      </select>
+    </div>
+
+    <button (click)="saveTask()">Save</button>
+  </div>
+</form>

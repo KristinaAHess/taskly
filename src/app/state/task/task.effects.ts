@@ -14,7 +14,9 @@ import {
   RemoveTaskSuccessAction,
   TaskActionTypes,
   UpdateTaskAction,
-  UpdateTaskSuccessAction
+  UpdateTaskSuccessAction,
+  LoadTaskByIdAction,
+  LoadTaskByIdSuccessAction,
 } from './task.actions';
 import { EventService } from '../../task/event.service';
 
@@ -31,6 +33,13 @@ export class TaskEffects {
     map((tasks: Array<Task>) => new LoadTasksSuccessAction(tasks))
   );
 
+  @Effect() getTaskById$ = this.actions$.pipe(
+    ofType(TaskActionTypes.LOAD_TASK_BY_ID),
+    map((action: LoadTaskByIdAction) => action.payload),
+    switchMap(payload => this.tasksService.getTask(String(payload))),
+    map((task: Task) => new LoadTaskByIdSuccessAction(task))
+  );
+
   @Effect() updateTask$ = this.actions$.pipe(
     ofType(TaskActionTypes.UPDATE_TASK),
     map((action: UpdateTaskAction) => action.payload),
@@ -42,7 +51,7 @@ export class TaskEffects {
   @Effect() addTask$ = this.actions$.pipe(
     ofType(TaskActionTypes.ADD_TASK),
     map((action: UpdateTaskAction) => action.payload),
-    concatMap((task: Task) => this.tasksService.updateTask(task)),
+    concatMap((task: Task) => this.tasksService.createTask(task)),
     tap((task: Task) => this.router.navigate(['/tasks', task.id])),
     map((task: Task) => new AddTaskSuccessAction(task))
   );

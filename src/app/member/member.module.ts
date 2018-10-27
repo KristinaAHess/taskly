@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -17,7 +18,6 @@ import { MemberFormTemplateComponent } from './member-form-template/member-form-
 import { MemberComponent } from './member.component';
 import { MEMBER_ROUTES } from './member.routes';
 import { MemberService } from './member.service';
-import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   imports: [

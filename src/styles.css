@@ -18,6 +18,7 @@ mat-card {
   margin: 0 auto;
   margin-top: 2em;
   margin-bottom: 2em;
+  padding-top: 0 !important;
 }
 
 mat-card-title-group.fullBleed {
@@ -54,4 +55,27 @@ dd {
   /* adjust the width; make sure the total of both is 100% */
   padding: 0;
   margin-inline-start: 0;
+}
+
+.customClass {
+  background-color: #dd3;
+  border-radius: 5px;
+  margin:5px;
+  width: 500px;
+}
+
+.customClass .img-ul-upload {
+  background-color: #000 !important;
+}
+
+.customClass .img-ul-clear {
+  background-color: #B819BB !important;
+}
+
+.customClass .img-ul-drag-box-msg {
+  color: purple !important;
+}
+
+.customClass .img-ul-container {
+  background-color: #FF6CAD !important;
 }

@@ -13,11 +13,11 @@ import { CalendarEvent } from 'angular-calendar';
 export class DashboardOverviewComponent implements OnInit {
   events$: Observable<Array<CalendarEvent>>;
 
-  constructor(private store: Store<ApplicationState>) {
-  }
+  constructor(private store: Store<ApplicationState>) { }
 
   ngOnInit() {
     this.events$ = this.store.pipe(select(TasksQuery.getEvents));
+    this.store.dispatch(new LoadMembersAction());
   }
 
 }
