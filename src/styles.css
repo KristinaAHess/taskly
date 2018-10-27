@@ -13,6 +13,21 @@ body {
   margin: 0;
 }
 
+.add-member-or-task {
+  background-color: #B819BB;
+  color: white;
+}
+
+.add-member-or-task-tag {
+  text-align: center;
+  color: white;
+}
+
+.big-plus {
+  font-size: x-large;
+  margin-right: 10px;
+}
+
 mat-card {
   max-width: 700px;
   margin: 0 auto;
