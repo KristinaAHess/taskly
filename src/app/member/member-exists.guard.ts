@@ -1,3 +1,4 @@
+import { LoadMembersAction, LoadMemberByIdAction } from 'src/app/state/member/member.actions';
 import { AddMemberAction } from './../state/member/member.actions';
 import { Member } from './models/member';
 import { MembersQuery } from 'src/app/state/member/member.reducer';
@@ -19,14 +20,14 @@ export class MemberExistsGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot) {
     const memberId = route.paramMap.get('id');
     this.store.dispatch(new SelectMemberAction(+memberId));
+    this.store.dispatch(new LoadMemberByIdAction(+memberId));
 
     return this.store.pipe(
-      select(MembersQuery.getMembersLoaded),
+      select(MembersQuery.getSelectedMember),
       take(1),
-      switchMap(loaded => {
+      switchMap(selectedMember => {
         const addMemberToList = (member: Member) => this.store.dispatch(new AddMemberAction(member));
-        return loaded ? of(true) : this.memberService.getMember(memberId).pipe(
-            tap(addMemberToList),
+        return selectedMember ? of(true) : this.memberService.getMember(memberId).pipe(
             map(member => !!member)
           );
       })

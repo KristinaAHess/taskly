@@ -18,7 +18,7 @@ const INITIAL_MEMBERS_STATE = {
 export function membersReducer(state: MembersState = INITIAL_MEMBERS_STATE, action: MembersActions): MembersState {
   switch (action.type) {
     case MemberActionTypes.LOAD_MEMBERS_SUCCESS:
-      return {
+      return state.loaded ? state : {
         ...state,
         entities: action.payload.reduce(
           (memberEntities, member) => {
@@ -28,6 +28,7 @@ export function membersReducer(state: MembersState = INITIAL_MEMBERS_STATE, acti
         ),
         loaded: true
       };
+    case MemberActionTypes.LOAD_MEMBER_BY_ID_SUCCESS:
     case MemberActionTypes.ADD_MEMBER_SUCCESS:
       const inStore = state.entities[action.payload.id];
 

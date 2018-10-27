@@ -13,6 +13,7 @@ export class DashboardOverviewComponent implements OnInit {
   constructor(private store: Store<ApplicationState>) { }
 
   ngOnInit() {
+    this.store.dispatch(new LoadMembersAction());
   }
 
 }

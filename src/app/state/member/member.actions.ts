@@ -4,6 +4,8 @@ import { Action } from '@ngrx/store';
 export enum MemberActionTypes {
   LOAD_MEMBERS = '[Members] Load Members',
   LOAD_MEMBERS_SUCCESS = '[Members] Load Members Success',
+  LOAD_MEMBER_BY_ID = '[Members] Load Member by id',
+  LOAD_MEMBER_BY_ID_SUCCESS = '[Members] Load Member by id success',
   ADD_MEMBER = '[Members] Add member',
   ADD_MEMBER_SUCCESS = '[Members] Add member success',
   REMOVE_MEMBER = '[Members] Remove member',
@@ -21,6 +23,18 @@ export class LoadMembersSuccessAction implements Action {
   readonly type = MemberActionTypes.LOAD_MEMBERS_SUCCESS;
 
   constructor(public payload: Array<Member>) {}
+}
+
+export class LoadMemberByIdAction implements Action {
+  readonly type = MemberActionTypes.LOAD_MEMBER_BY_ID;
+
+  constructor(public payload: number) {}
+}
+
+export class LoadMemberByIdSuccessAction implements Action {
+  readonly type = MemberActionTypes.LOAD_MEMBER_BY_ID_SUCCESS;
+
+  constructor(public payload: Member) {}
 }
 
 export class AddMemberAction implements Action {
@@ -68,6 +82,8 @@ export class SelectMemberAction implements Action {
 export type MembersActions =
   | LoadMembersAction
   | LoadMembersSuccessAction
+  | LoadMemberByIdAction
+  | LoadMemberByIdSuccessAction
   | AddMemberAction
   | AddMemberSuccessAction
   | RemoveMemberAction
