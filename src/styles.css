@@ -83,6 +83,10 @@ dd {
   width: 500px;
 }
 
+.mat-list-item-active {
+  background: lightgrey;
+}
+
 .customClass .img-ul-upload {
   background-color: #000 !important;
 }

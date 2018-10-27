@@ -2,6 +2,7 @@
   <mat-list>
     <a mat-list-item
       [routerLink]="['/tasks', task.id]"
+      [routerLinkActive]="'mat-list-item-active'"
       *ngFor="let task of tasks; trackBy:trackByTaskId"
       title="View {{task.description}} details">
       <img mat-list-avatar [src]="task.icon" alt="Picture of {{task.description}}">

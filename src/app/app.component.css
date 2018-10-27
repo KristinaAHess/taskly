@@ -20,6 +20,11 @@ mat-toolbar{
   flex: 1 1 auto;
 }
 
+.spacer {
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
 .taskly-link {
   font-weight: lighter;
   text-emphasis: none;
