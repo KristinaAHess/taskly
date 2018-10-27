@@ -2,19 +2,23 @@ import { TaskActionTypes, TasksActions } from './task.actions';
 import { Task } from 'src/app/task/models/task';
 import { ApplicationState } from '../app.state';
 import { createSelector } from '@ngrx/store';
+import { CalendarEvent } from 'angular-calendar';
+import { MembersQuery } from '../member/member.reducer';
 
 export interface TasksState {
   entities: { [id: number]: Task };
   selectedTaskId: number;
   loaded: boolean;
   events: Array<CalendarEvent>;
+  eventsLoaded: boolean;
 }
 
 const INITIAL_TASKS_STATE = {
   entities: {},
   selectedTaskId: -1,
   loaded: false,
-  events: []
+  events: [],
+  eventsLoaded: false
 };
 
 export function tasksReducer(state: TasksState = INITIAL_TASKS_STATE, action: TasksActions): TasksState {
@@ -52,7 +56,7 @@ export function tasksReducer(state: TasksState = INITIAL_TASKS_STATE, action: Ta
     case TaskActionTypes.UPDATE_TASK_SUCCESS:
       return {...state, entities: {...state.entities, [action.payload.id]: action.payload}};
     case TaskActionTypes.CALCULATE_EVENTS_SUCCESS:
-      return {...state, events: {payload}};
+      return {...state, events: action.payload, eventsLoaded: true};
     default:
       return state;
   }
@@ -69,5 +73,11 @@ export namespace TasksQuery {
 
   export const getSelectedTask = createSelector(getTaskEntities, getSelectedTaskId, (tasks, id) => {
     return tasks[id];
+  });
+
+  export const getEventsLoaded = (state: ApplicationState) => state.tasks.eventsLoaded;
+  export const getEvents = (state: ApplicationState) => state.tasks.events;
+  export const getEventsforSelectedMember = createSelector(getEvents, MembersQuery.getSelectedMember, (events, member) => {
+    return events.find(event => event.color.primary === member.color || event.color.secondary === member.color);
   });
 }

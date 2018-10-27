@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { concatMap, map, switchMap, tap } from 'rxjs/operators';
 import { Task } from 'src/app/task/models/task';
+import { CalendarEvent } from 'angular-calendar';
 
 import { TaskService } from './../../task/task.service';
 import {
@@ -15,6 +16,7 @@ import {
   UpdateTaskAction,
   UpdateTaskSuccessAction
 } from './task.actions';
+import { EventService } from '../../task/event.service';
 
 @Injectable({
   providedIn: 'root'
@@ -54,7 +56,7 @@ export class TaskEffects {
 
   @Effect() calculateEvents$ = this.actions$.pipe(
     ofType(TaskActionTypes.CALCULATE_EVENTS),
-    switchMap(payload => this.eventService.calculateEvents()),
+    switchMap(payload => this.eventsService.calculateEvents()),
     map((events: Array<CalendarEvent>) => new CalculateEventsSuccessAction(events))
   );
 }
