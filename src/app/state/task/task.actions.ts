@@ -1,5 +1,6 @@
 import { Task } from 'src/app/task/models/task';
 import { Action } from '@ngrx/store';
+import {CalendarEvent} from 'angular-calendar';
 
 export enum TaskActionTypes {
   LOAD_TASKS = '[Tasks] Load Tasks',
@@ -12,7 +13,9 @@ export enum TaskActionTypes {
   REMOVE_TASK_SUCCESS = '[Tasks] Remove task success',
   UPDATE_TASK = '[Tasks] Update task',
   UPDATE_TASK_SUCCESS = '[Tasks] Update task success',
-  SELECT_TASK = '[Tasks] Select task'
+  SELECT_TASK = '[Tasks] Select task',
+  CALCULATE_EVENTS = '[Tasks] Calculate dates',
+  CALCULATE_EVENTS_SUCCESS = '[Tasks] Calculate dates success'
 }
 
 export class LoadTasksAction implements Action {
@@ -79,6 +82,16 @@ export class SelectTaskAction implements Action {
   constructor(public payload: number) {}
 }
 
+export class CalculateEventsAction implements Action {
+  readonly type = TaskActionTypes.CALCULATE_EVENTS;
+}
+
+export class CalculateEventsSuccessAction implements Action {
+  readonly type = TaskActionTypes.CALCULATE_EVENTS_SUCCESS;
+
+  constructor(public payload: Array<CalendarEvent>) {}
+}
+
 export type TasksActions =
   | LoadTasksAction
   | LoadTasksSuccessAction
@@ -90,4 +103,6 @@ export type TasksActions =
   | RemoveTaskSuccessAction
   | UpdateTaskAction
   | UpdateTaskSuccessAction
-  | SelectTaskAction;
+  | SelectTaskAction
+  | CalculateEventsAction
+  | CalculateEventsSuccessAction;

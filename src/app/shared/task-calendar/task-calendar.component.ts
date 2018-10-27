@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {CalendarEvent} from 'angular-calendar';
+import { Component, Input, OnInit } from '@angular/core';
+import { CalendarEvent } from 'angular-calendar';
+import { Store } from '@ngrx/store';
+import { ApplicationState } from '../../state/app.state';
 
 @Component({
   selector: 'app-task-calendar',
@@ -9,19 +11,11 @@ import {CalendarEvent} from 'angular-calendar';
 export class TaskCalendarComponent implements OnInit {
 
   viewDate: Date = new Date();
-  events: CalendarEvent[] = [
-    {
-      start: new Date(),
-      title: 'An event with no end date',
-      allDay: true
-    },
-    {
-      start: new Date(),
-      title: 'A second event',
-      allDay: true
-    }];
+  @Input()
+  events: CalendarEvent[];
 
-  constructor() { }
+  constructor(private store: Store<ApplicationState>) {
+  }
 
   ngOnInit() {
   }

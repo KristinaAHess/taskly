@@ -2,22 +2,25 @@ import { TasksQuery } from 'src/app/state/task/task.reducer';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { concatMap, map, switchMap, tap, filter } from 'rxjs/operators';
+import { concatMap, filter, map, switchMap, tap } from 'rxjs/operators';
 import { Task } from 'src/app/task/models/task';
+import { CalendarEvent } from 'angular-calendar';
 
 import { TaskService } from './../../task/task.service';
 import {
   AddTaskSuccessAction,
-  LoadTasksSuccessAction,
-  TaskActionTypes,
-  RemoveTaskAction,
-  RemoveTaskSuccessAction,
-  UpdateTaskAction,
-  UpdateTaskSuccessAction,
+  CalculateEventsSuccessAction,
   LoadTaskByIdAction,
   LoadTaskByIdSuccessAction,
+  LoadTasksSuccessAction,
+  RemoveTaskAction,
+  RemoveTaskSuccessAction,
+  TaskActionTypes,
+  UpdateTaskAction,
+  UpdateTaskSuccessAction
 } from './task.actions';
-import { Store, select } from '@ngrx/store';
+import { EventService } from '../../task/event.service';
+import { select, Store } from '@ngrx/store';
 import { ApplicationState } from '../app.state';
 
 @Injectable({
@@ -27,8 +30,10 @@ export class TaskEffects {
   constructor(
     private actions$: Actions,
     private tasksService: TaskService,
+    private eventsService: EventService,
     private router: Router,
-    private store: Store<ApplicationState>) {}
+    private store: Store<ApplicationState>) {
+  }
 
   @Effect() getTasks$ = this.actions$.pipe(
     ofType(TaskActionTypes.LOAD_TASKS),
@@ -68,17 +73,23 @@ export class TaskEffects {
     map((taskId: string) => new RemoveTaskSuccessAction(taskId))
   );
 
+  @Effect() calculateEvents$ = this.actions$.pipe(
+    ofType(TaskActionTypes.CALCULATE_EVENTS),
+    switchMap(payload => this.eventsService.calculateEvents()),
+    map((events: Array<CalendarEvent>) => new CalculateEventsSuccessAction(events))
+  );
+
   private filterIfLoaded(fn) {
     return source => source.pipe(
       switchMap(payload => this.store.pipe(
-          select(fn),
-          map(loaded => {
-            return {loaded, payload};
-          })
+        select(fn),
+        map(loaded => {
+          return {loaded, payload};
+        })
         )
       ),
-      filter((res: {loaded: boolean, payload: any}) => !res.loaded),
-      map((res: {loaded: boolean, payload: any}) => res.payload)
+      filter((res: { loaded: boolean, payload: any }) => !res.loaded),
+      map((res: { loaded: boolean, payload: any }) => res.payload)
     );
   }
 }

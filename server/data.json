@@ -7,7 +7,8 @@
       "birthday": "1996-06-26",
       "sex": "female",
       "score": 0,
-      "image": "/assets/images/placeholder.png"
+      "image": "/assets/images/placeholder.png",
+      "color": "#31B404"
     },
     {
       "id": 1,
@@ -16,7 +17,8 @@
       "birthday": "1993-04-19",
       "sex": "male",
       "score": 0,
-      "image": "/assets/images/placeholder.png"
+      "image": "/assets/images/placeholder.png",
+      "color": "#819FF7"
     },
     {
       "id": 2,
@@ -25,16 +27,18 @@
       "birthday": "1994-12-24",
       "sex": "female",
       "score": 0,
-      "image": "/assets/images/placeholder.png"
+      "image": "/assets/images/placeholder.png",
+      "color": "#FF8000"
     },
     {
       "id": 3,
-      "name": "Kristina Heﬂ",
+      "name": "Kristina He√ü",
       "nickname": "Krissi",
       "birthday": "1994-01-13",
       "sex": "female",
       "score": 0,
-      "image": "/assets/images/placeholder.png"
+      "image": "/assets/images/placeholder.png",
+      "color": "#2EFEF7"
     }
   ],
   "tasks": [
@@ -45,7 +49,7 @@
       "date": "2018-10-27",
       "repetitionAfterDays": 14,
       "icon": "/assets/icons/cleaning.png",
-      "preferredBy": []
+      "preferredBy": 1
     },
     {
       "id": 1,
@@ -54,7 +58,7 @@
       "date": "2018-10-28",
       "repetitionAfterDays": 7,
       "icon": "/assets/icons/cleaning.png",
-      "preferredBy": []
+      "preferredBy": "1"
     },
     {
       "id": 2,
@@ -63,7 +67,7 @@
       "date": "2018-10-27",
       "repetitionAfterDays": 4,
       "icon": "/assets/icons/cleaning.png",
-      "preferredBy": []
+      "preferredBy": 3
     },
     {
       "id": 3,
@@ -72,16 +76,16 @@
       "date": "2018-10-27",
       "repetitionAfterDays": 8,
       "icon": "/assets/icons/cleaning.png",
-      "preferredBy": []
+      "preferredBy": 0
     },
     {
-      "id": 4,
+      "id": 0,
       "description": "Do shopping (food)",
       "points": 2,
       "date": "2018-10-27",
       "repetitionAfterDays": 3,
       "icon": "/assets/icons/cleaning.png",
-      "preferredBy": []
+      "preferredBy": 1
     }
   ]
 }

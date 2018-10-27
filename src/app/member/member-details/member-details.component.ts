@@ -7,6 +7,9 @@ import { MembersQuery } from 'src/app/state/member/member.reducer';
 import { Member } from '../models/member';
 import { Observable } from 'rxjs';
 import { DialogService } from 'src/app/shared/mat-confirm-dialog/dialog.service';
+import { TasksQuery } from '../../state/task/task.reducer';
+import { CalendarEvent } from 'angular-calendar';
+import { LoadTasksAction } from '../../state/task/task.actions';
 
 @Component({
   selector: 'app-member-details',
@@ -14,7 +17,7 @@ import { DialogService } from 'src/app/shared/mat-confirm-dialog/dialog.service'
   styleUrls: ['./member-details.component.css']
 })
 export class MemberDetailsComponent implements OnInit {
-
+  events$: Observable<Array<CalendarEvent>>;
   member$: Observable<Member>;
 
   constructor(
@@ -27,7 +30,9 @@ export class MemberDetailsComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     this.store.dispatch(new LoadMembersAction());
     this.store.dispatch(new SelectMemberAction(+id));
+    this.store.dispatch(new LoadTasksAction());
     this.member$ = this.store.pipe(select(MembersQuery.getSelectedMember));
+    this.events$ = this.store.pipe(select(TasksQuery.getEventsforSelectedMember));
   }
 
   navigateToEditor() {

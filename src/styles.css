@@ -103,6 +103,10 @@ dd {
   background-color: #FF6CAD !important;
 }
 
+.cal-week-view .cal-event{
+  color: black;
+}
+
 
 /* for dialog pop-up */
 .btn-dialog-close{

@@ -4,7 +4,7 @@ import {MembersQuery} from '../../state/member/member.reducer';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ApplicationState} from '../../state/app.state';
 import {select, Store} from '@ngrx/store';
-import {AddTaskAction} from '../../state/task/task.actions';
+import { AddTaskAction, CalculateEventsAction } from '../../state/task/task.actions';
 
 @Component({
   selector: 'app-task-create',
@@ -36,6 +36,7 @@ export class TaskCreateComponent implements OnInit {
   saveNewTask($event) {
     const newTask = {...$event};
     this.store.dispatch(new AddTaskAction(newTask));
+    this.store.dispatch(new CalculateEventsAction());
   }
 
 }

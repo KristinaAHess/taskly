@@ -4,6 +4,7 @@ import { MemberDetailsComponent } from './member-details/member-details.componen
 import { MemberDashboardComponent } from './member-dashboard/member-dashboard.component';
 import { Routes } from '@angular/router';
 import { MemberExistsGuard } from './member-exists.guard';
+import { EventsExistsGuard } from '../task/events-exists-guard.service';
 // import { MembersExistGuard } from './members-exist.guard';
 
 export const MEMBER_ROUTES: Routes = [
@@ -15,7 +16,7 @@ export const MEMBER_ROUTES: Routes = [
       {
         path: ':id',
         component: MemberDetailsComponent,
-        canActivate: [MemberExistsGuard]
+        canActivate: [MemberExistsGuard, EventsExistsGuard]
       },
       {
         path: ':id/edit',
