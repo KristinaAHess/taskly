@@ -24,17 +24,19 @@ export class EventService {
           map(entites => {
             const events: Array<CalendarEvent> = new Array();
             for (const task of tasks) {
-              const member = entites[task.preferredBy];
-              if (member) {
-                events.push(<CalendarEvent> {
-                  start: new Date(task.date),
-                  title: task.description,
-                  allDay: true,
-                  color: {
-                    primary: member.color,
-                    secondary: member.color
-                  }
-                });
+              if (task.doneBy) {
+                const member = entites[task.doneBy.id];
+                if (member) {
+                  events.push(<CalendarEvent> {
+                    start: new Date(task.date),
+                    title: task.description,
+                    allDay: true,
+                    color: {
+                      primary: member.color,
+                      secondary: member.color
+                    }
+                  });
+                }
               }
             }
             console.log(events);
