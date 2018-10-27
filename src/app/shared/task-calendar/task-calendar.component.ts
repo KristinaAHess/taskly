@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {CalendarEvent} from 'angular-calendar';
 import {ApplicationState} from '../../state/app.state';
 import {select, Store} from '@ngrx/store';
@@ -13,17 +13,8 @@ import {TaskService} from '../../task/task.service';
 export class TaskCalendarComponent implements OnInit {
 
   viewDate: Date = new Date();
-  events: CalendarEvent[] = [
-    {
-      start: new Date(),
-      title: 'An event with no end date',
-      allDay: true
-    },
-    {
-      start: new Date(),
-      title: 'A second event',
-      allDay: true
-    }];
+  @Input()
+  events: CalendarEvent[];
 
   constructor(private store: Store<ApplicationState>, private taskService: TaskService) { }
 

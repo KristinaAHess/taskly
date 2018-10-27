@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormGroup} from '@angular/forms';
-import {Member, Sex} from '../models/member';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { Member, Sex } from '../models/member';
 
 @Component({
   selector: 'app-member-form-template',

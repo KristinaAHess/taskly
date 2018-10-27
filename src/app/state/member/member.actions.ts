@@ -58,7 +58,7 @@ export class RemoveMemberAction implements Action {
 export class RemoveMemberSuccessAction implements Action {
   readonly type = MemberActionTypes.REMOVE_MEMBER_SUCCESS;
 
-  constructor(public payload: Member) {}
+  constructor(public payload: string) {}
 }
 
 export class UpdateMemberAction implements Action {

@@ -3,9 +3,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { StoreModule } from '@ngrx/store';
-
-import { MaterialModule } from '../material.module';
-import { SharedModule } from '../shared/shared.module';
 import { TaskCreateComponent } from './task-create/task-create.component';
 import { TaskDashboardComponent } from './task-dashboard/task-dashboard.component';
 import { TaskDetailsComponent } from './task-details/task-details.component';
@@ -15,6 +12,11 @@ import { TaskFormTemplateComponent } from './task-form-template/task-form-templa
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskComponent } from './task.component';
 import { TASK_ROUTES } from './task.routes';
+import { TaskService } from './task.service';
+import { MaterialModule } from '../material.module';
+import { SharedModule } from '../shared/shared.module';
+import { EventService } from './event.service';
+import { EventsExistsGuard } from './events-exists-guard.service';
 
 
 @NgModule({
@@ -36,7 +38,10 @@ import { TASK_ROUTES } from './task.routes';
     TaskComponent
   ],
   providers: [
-    TaskExistsGuard
+    TaskService,
+    TaskExistsGuard,
+    EventService,
+    EventsExistsGuard,
   ]
 })
 export class TaskModule {

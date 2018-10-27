@@ -1,3 +1,4 @@
+import { MatConfirmDialogComponent } from './mat-confirm-dialog/mat-confirm-dialog.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {TaskCalendarComponent} from './task-calendar/task-calendar.component';
@@ -8,6 +9,7 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from '../material.module';
 import {MemberService} from '../member/member.service';
 import { DashboardTemplateComponent } from './dashboard-template/dashboard-template.component';
+import { DialogService } from './mat-confirm-dialog/dialog.service';
 
 @NgModule({
   imports: [
@@ -22,7 +24,8 @@ import { DashboardTemplateComponent } from './dashboard-template/dashboard-templ
   declarations: [
     TaskCalendarComponent,
     MemberListComponent,
-    DashboardTemplateComponent
+    DashboardTemplateComponent,
+    MatConfirmDialogComponent
   ],
   exports: [
     TaskCalendarComponent,
@@ -30,7 +33,9 @@ import { DashboardTemplateComponent } from './dashboard-template/dashboard-templ
     DashboardTemplateComponent
   ],
   providers: [
+    DialogService,
     MemberService
-  ]
+  ],
+  entryComponents: [MatConfirmDialogComponent]
 })
 export class SharedModule { }

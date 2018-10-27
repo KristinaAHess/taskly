@@ -18,6 +18,12 @@ mat-toolbar{
      Every toolbar row uses a flexbox row layout. */
   color: white;
   flex: 1 1 auto;
+  text-emphasis: none;
+}
+
+.spacer {
+  margin-left: 10px;
+  vertical-align: middle;
 }
 
 .taskly-link {
@@ -26,4 +32,9 @@ mat-toolbar{
   color: white;
   text-decoration: none;
   margin-left: 10px;
+  margin-right: 10px;
+}
+
+.router-link-active {
+  font-weight: normal;
 }

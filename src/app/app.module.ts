@@ -32,7 +32,7 @@ import { TaskEffects } from './state/task/task.effects';
     EffectsModule.forRoot([MemberEffects, TaskEffects]),
     SharedModule,
     RouterModule.forRoot(APP_ROUTES, { preloadingStrategy: PreloadAllModules } ),
-    StoreDevtoolsModule.instrument(),
+    StoreDevtoolsModule.instrument()
   ],
   providers: [
     TaskService,

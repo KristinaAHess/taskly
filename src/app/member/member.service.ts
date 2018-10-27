@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { API_ENDPOINT } from '../app.tokens';
 import { Observable } from 'rxjs';
 import { Member } from './models/member';
+import { tap, mapTo } from 'rxjs/operators';
 
 @Injectable()
 export class MemberService {
@@ -26,7 +27,7 @@ export class MemberService {
     return this.http.post<Member>(`${this.apiEndpoint}/members`, member);
   }
 
-  removeMember(id: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiEndpoint}/members/${id}`);
+  removeMember(id: string): Observable<string> {
+    return this.http.delete<void>(`${this.apiEndpoint}/members/${id}`).pipe(mapTo(id));
   }
 }
