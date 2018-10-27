@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Member, Sex} from '../models/member';
 import {ApplicationState} from '../../state/app.state';
 import {select, Store} from '@ngrx/store';
@@ -21,10 +21,10 @@ export class MemberEditComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: '',
-      name: '',
+      name: ['', Validators.required],
       nickname: '',
       birthday: '',
-      sex: '',
+      sex: ['', Validators.required],
       image: '',
       score: '',
     });

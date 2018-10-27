@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {AddMemberAction} from '../../state/member/member.actions';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ApplicationState} from '../../state/app.state';
 import {Store} from '@ngrx/store';
 
@@ -19,16 +19,17 @@ export class MemberCreateComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: '',
-      name: '',
+      name: ['', Validators.required],
       nickname: '',
       birthday: '',
-      sex: '',
+      sex: ['', Validators.required],
       image: '',
       score: 0,
     });
   }
 
   saveNewMember($event) {
+    console.log('Save method reached');
     const newMember = {...$event};
     this.store.dispatch(new AddMemberAction(newMember));
   }

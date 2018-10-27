@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormGroup} from '@angular/forms';
+import {FormArray, FormGroup} from '@angular/forms';
 import {Member, Sex} from '../models/member';
 
 @Component({
@@ -19,6 +19,8 @@ export class MemberFormTemplateComponent implements OnInit {
   }
 
   saveMember() {
+    this.form.get('name').markAsTouched();
+    this.form.get('sex').markAsTouched();
     this.member.emit(this.form.value);
   }
 
