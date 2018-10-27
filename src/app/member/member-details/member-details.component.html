@@ -20,8 +20,7 @@
         </mat-tab>
 
         <mat-tab label="Todos">
-          <app-task-calendar>
-            <!-- todo insert tasks for this user only! -->
+          <app-task-calendar [events]="events$ | async" content>>
           </app-task-calendar>
         </mat-tab>
       </mat-tab-group>
