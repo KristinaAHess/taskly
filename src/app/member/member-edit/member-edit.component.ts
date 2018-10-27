@@ -25,7 +25,7 @@ export class MemberEditComponent implements OnInit {
       nickname: '',
       birthday: '',
       sex: ['', Validators.required],
-      image: '',
+      image: '/assets/images/placeholder.png',
       score: '',
     });
     this.store.pipe(select(MembersQuery.getSelectedMember)).subscribe((member) => {

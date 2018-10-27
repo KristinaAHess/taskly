@@ -23,7 +23,7 @@ export class MemberCreateComponent implements OnInit {
       nickname: '',
       birthday: '',
       sex: ['', Validators.required],
-      image: '',
+      image: '/assets/images/placeholder.png',
       score: 0,
     });
   }
