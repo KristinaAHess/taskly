@@ -21,7 +21,9 @@ export class MemberFormTemplateComponent implements OnInit {
   saveMember() {
     this.form.get('name').markAsTouched();
     this.form.get('sex').markAsTouched();
-    this.member.emit(this.form.value);
+    if (this.form.valid) {
+      this.member.emit(this.form.value);
+    }
   }
 
 }

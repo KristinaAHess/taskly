@@ -20,7 +20,13 @@ export class TaskFormTemplateComponent implements OnInit {
   }
 
   saveTask() {
-    this.task.emit(this.form.value);
+    this.form.get('description').markAsTouched();
+    this.form.get('date').markAsTouched();
+    this.form.get('points').markAsTouched();
+    this.form.get('repetitionAfterDays').markAsTouched();
+    if (this.form.valid) {
+      this.task.emit(this.form.value);
+    }
   }
 
 }

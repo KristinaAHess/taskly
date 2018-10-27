@@ -29,7 +29,6 @@ export class MemberCreateComponent implements OnInit {
   }
 
   saveNewMember($event) {
-    console.log('Save method reached');
     const newMember = {...$event};
     this.store.dispatch(new AddMemberAction(newMember));
   }

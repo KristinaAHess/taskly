@@ -22,3 +22,15 @@
   margin-right: auto;
   margin-left: auto;
 }
+
+.form-margin {
+  margin-top: 5px;
+}
+
+.alert-error {
+  border: 1px solid red;
+}
+
+.alert-error-msg{
+  color: red;
+}
