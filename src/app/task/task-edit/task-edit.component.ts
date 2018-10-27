@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {ApplicationState} from '../../state/app.state';
-import {select, Store} from '@ngrx/store';
-import {MembersQuery} from '../../state/member/member.reducer';
-import {TasksQuery} from '../../state/task/task.reducer';
-import {UpdateTaskAction} from '../../state/task/task.actions';
-import {Member} from '../../member/models/member';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ApplicationState } from '../../state/app.state';
+import { select, Store } from '@ngrx/store';
+import { MembersQuery } from '../../state/member/member.reducer';
+import { TasksQuery } from '../../state/task/task.reducer';
+import { UpdateTaskAction } from '../../state/task/task.actions';
+import { Member } from '../../member/models/member';
 
 @Component({
   selector: 'app-task-edit',
@@ -18,7 +18,8 @@ export class TaskEditComponent implements OnInit {
   members: Member[];
 
   constructor(private fb: FormBuilder,
-              private store: Store<ApplicationState>) { }
+              private store: Store<ApplicationState>) {
+  }
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -28,13 +29,13 @@ export class TaskEditComponent implements OnInit {
       date: ['', Validators.required],
       repetitionAfterDays: [0, [Validators.min(0), Validators.max(365)]],
       icon: '/assets/icons/cleaning.png',
-      preferredBy: '',
+      preferredBy: ''
     });
 
     this.store.pipe(select(TasksQuery.getSelectedTask)).subscribe((task) => {
       this.form.patchValue(task);
     });
-    this.store.pipe(select(MembersQuery.getMembers)).subscribe((members) =>  this.members = members);
+    this.store.pipe(select(MembersQuery.getMembers)).subscribe((members) => this.members = members);
   }
 
   saveTask($event) {

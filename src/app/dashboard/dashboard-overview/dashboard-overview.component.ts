@@ -4,6 +4,7 @@ import { select, Store } from '@ngrx/store';
 import { TasksQuery } from '../../state/task/task.reducer';
 import { Observable } from 'rxjs';
 import { CalendarEvent } from 'angular-calendar';
+import { LoadMembersAction } from '../../state/member/member.actions';
 
 @Component({
   selector: 'app-dashboard-overview',
