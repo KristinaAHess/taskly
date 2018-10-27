@@ -1,0 +1,23 @@
+<div>
+  <mat-card *ngIf="task$ | async as task">
+    <mat-card-title-group class="fullBleed">
+      <img mat-card-md-image [src]="task?.icon || ''">
+      <mat-card-title>{{task?.description}}</mat-card-title>
+      <mat-card-subtitle>Score: {{task?.points}}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      <dl>
+        <dt>Next Date:</dt>
+        <dd>{{task?.date || '-'}}</dd>
+        <dt>Every:</dt>
+        <dd>{{task?.repetitionAfterDays || '-'}} Days</dd>
+        <dt>Preferred by:</dt>
+        <dd>{{task?.preferredBy}}</dd>
+      </dl>
+    </mat-card-content>
+    <mat-card-actions fxLayout fxLayoutAlign="center center">
+      <a mat-button (click)="navigateToEditor()" title="Edit {{task?.description}}"><img src="/assets/icons/edit.png" style="width: 15px; padding: 10px;">Edit</a>
+      <a mat-button (click)="onDelete(task)" title="Remove {{task?.name}}"><img src="/assets/icons/remove.png" style="width: 15px; padding: 10px;">Remove</a>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,13 @@
+<div class="list-container">
+  <mat-list>
+    <a mat-list-item [routerLink]="['/members', member.id]" [routerLinkActive]="'mat-list-item-active'" *ngFor="let member of members$ | async; trackBy:trackByMemberId"
+      title="View {{member.name}} details">
+      <img mat-list-avatar [src]="member.image" alt="Picture of {{member.name}}">
+      <h3 mat-line>{{member.name}}</h3>
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item class="add-member-or-task" routerLink="/members/create" title="Add new Member">
+      <h3 mat-line class="add-member-or-task-tag"><span class="big-plus">+</span>Add new Member</h3>
+    </a>
+  </mat-list>
+</div>

@@ -2,19 +2,90 @@
   "members": [
     {
       "id": 0,
-      "name": "Katja Niklas"
+      "name": "Katja Niklas",
+      "nickname": "Kati",
+      "birthday": "1996-06-26",
+      "sex": "female",
+      "score": 0,
+      "image": "/assets/images/placeholder.png",
+      "color": "#31B404"
     },
     {
       "id": 1,
-      "name": "Andre Clausen"
+      "name": "Andre Clausen",
+      "nickname": "Der Meister",
+      "birthday": "1993-04-19",
+      "sex": "male",
+      "score": 0,
+      "image": "/assets/images/placeholder.png",
+      "color": "#819FF7"
     },
     {
       "id": 2,
-      "name": "Julia Nissen"
+      "name": "Julia Nissen",
+      "nickname": "",
+      "birthday": "1994-12-24",
+      "sex": "female",
+      "score": 0,
+      "image": "/assets/images/placeholder.png",
+      "color": "#FF8000"
     },
     {
       "id": 3,
-      "name": "Kristina Heß"
+      "name": "Kristina Heß",
+      "nickname": "Krissi",
+      "birthday": "1994-01-13",
+      "sex": "female",
+      "score": 0,
+      "image": "/assets/images/placeholder.png",
+      "color": "#2EFEF7"
+    }
+  ],
+  "tasks": [
+    {
+      "id": 0,
+      "description": "Cleaning bathroom",
+      "points": 4,
+      "date": "2018-10-27",
+      "repetitionAfterDays": 14,
+      "icon": "/assets/icons/cleaning.png",
+      "preferredBy": 1
+    },
+    {
+      "id": 1,
+      "description": "Cleaning kitchen",
+      "points": 3,
+      "date": "2018-10-28",
+      "repetitionAfterDays": 7,
+      "icon": "/assets/icons/cleaning.png",
+      "preferredBy": "1"
+    },
+    {
+      "id": 2,
+      "description": "Bring out garbage",
+      "points": 1,
+      "date": "2018-10-27",
+      "repetitionAfterDays": 4,
+      "icon": "/assets/icons/cleaning.png",
+      "preferredBy": 3
+    },
+    {
+      "id": 3,
+      "description": "Watering flowers",
+      "points": 1,
+      "date": "2018-10-27",
+      "repetitionAfterDays": 8,
+      "icon": "/assets/icons/cleaning.png",
+      "preferredBy": 0
+    },
+    {
+      "id": 0,
+      "description": "Do shopping (food)",
+      "points": 2,
+      "date": "2018-10-27",
+      "repetitionAfterDays": 3,
+      "icon": "/assets/icons/cleaning.png",
+      "preferredBy": 1
     }
   ]
 }

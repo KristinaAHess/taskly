@@ -1,0 +1,8 @@
+<mat-drawer-container>
+  <mat-drawer mode="side" opened="true" style="width: 270px;">
+    <ng-content select="[list]"></ng-content>
+  </mat-drawer>
+  <div class="main-content">
+    <ng-content select="[content]"></ng-content>
+  </div>
+</mat-drawer-container>

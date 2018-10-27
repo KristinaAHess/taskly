@@ -1,0 +1,17 @@
+<div  class="list-container">
+  <mat-list>
+    <a mat-list-item
+      [routerLink]="['/tasks', task.id]"
+      [routerLinkActive]="'mat-list-item-active'"
+      *ngFor="let task of tasks; trackBy:trackByTaskId"
+      title="View {{task.description}} details">
+      <img mat-list-avatar [src]="task.icon" alt="Picture of {{task.description}}">
+      <h3 mat-line>{{task.description}}</h3>
+    </a>
+    <mat-divider></mat-divider>
+    <a mat-list-item class="add-member-or-task" routerLink="/tasks/create" title="Add new Task">
+      <h3 mat-line class="add-member-or-task-tag"><span class="big-plus">+</span>Add new Task</h3>
+    </a>
+  </mat-list>
+</div>
+

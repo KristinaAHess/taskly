@@ -1,0 +1,40 @@
+/deep/ mat-list {
+  background-color: white;
+  padding-top: 0!important;
+}
+
+/deep/ mat-list-item,
+/deep/ [mat-list-item] {
+  border-bottom: 1px solid #ddd;
+  text-decoration: none;
+}
+
+mat-toolbar{
+  margin-bottom: 5px;
+}
+
+.fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  color: white;
+  flex: 1 1 auto;
+  text-emphasis: none;
+}
+
+.spacer {
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.taskly-link {
+  font-weight: lighter;
+  text-emphasis: none;
+  color: white;
+  text-decoration: none;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.router-link-active {
+  font-weight: normal;
+}

@@ -1,1 +1,166 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* angular-cli file: src/styles.css */
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+html, mat-drawer-container, mat-drawer-content, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+mat-card-actions {
+  text-align: center;
+}
+
+.add-member-or-task {
+  background-color: #B819BB;
+  color: white;
+}
+
+.add-member-or-task-tag {
+  text-align: center;
+  color: white;
+}
+
+.big-plus {
+  font-size: x-large;
+  margin-right: 10px;
+}
+
+mat-card {
+  max-width: 700px;
+  margin: 0 auto;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  padding-top: 0 !important;
+}
+
+mat-card-title-group.fullBleed {
+  background-color: #b1d6fc;
+  padding: 30px;
+  margin-top: -24px;
+  margin-left: -24px;
+  margin-right: -24px;
+  margin-bottom: 24px;
+}
+
+dl {
+  width: 100%;
+  overflow: hidden;
+  padding: 0;
+  margin: 0
+}
+
+dt, dd {
+  display: inline-block;
+  margin-top: 1.5em;
+}
+
+dt {
+  float: left;
+  width: 50%;
+  /* adjust the width; make sure the total of both is 100% */
+  padding: 0;
+}
+
+dd {
+  float: left;
+  width: 50%;
+  /* adjust the width; make sure the total of both is 100% */
+  padding: 0;
+  margin-inline-start: 0;
+}
+
+.customClass {
+  background-color: #dd3;
+  border-radius: 5px;
+  margin:5px;
+  width: 500px;
+}
+
+.mat-list-item-active {
+  background: lightgrey;
+}
+
+.customClass .img-ul-upload {
+  background-color: #000 !important;
+}
+
+.customClass .img-ul-clear {
+  background-color: #B819BB !important;
+}
+
+.customClass .img-ul-drag-box-msg {
+  color: purple !important;
+}
+
+.customClass .img-ul-container {
+  background-color: #FF6CAD !important;
+}
+
+.cal-week-view .cal-event{
+  color: black;
+}
+
+
+/* for dialog pop-up */
+.btn-dialog-close{
+  width: 45px;
+  min-width: 0px !important;
+  height: 40px;
+  padding: 0px !important;
+}
+
+ /* mat-confirm-dialog (customised dialog) */
+ .confirm-dialog-container .mat-dialog-container {
+  position: absolute;
+  width: 33%;
+  height: fit-content;
+  top: 20%;
+  left: 33%;
+  border-radius: .25em .25em .4em .4em;
+  padding: 0px;
+}
+.confirm-dialog-container .content-container{
+  color: #8f9cb5;
+  display: flex;
+}
+.confirm-dialog-container #close-icon{
+  order: 2;
+    float: right;
+    right: 10px;
+    font-weight: lighter;
+    position: relative;
+}
+.confirm-dialog-container #close-icon:hover{
+cursor: pointer;
+}
+
+.confirm-dialog-container #no-button{
+height: 50px;
+width: 50%;
+background-color: #fc7169;
+color:white;
+border-radius: 0px;
+}
+
+.confirm-dialog-container #yes-button{
+  height: 50px;
+  width: 50%;
+  background-color: #b6bece;
+  color:white;
+  border-radius: 0px;
+}
+
+.confirm-dialog-container span.content-span{
+  width: 100%;
+  padding:  35px 16px;
+  text-align: center;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif
+}
