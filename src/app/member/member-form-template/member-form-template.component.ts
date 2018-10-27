@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormArray, FormGroup} from '@angular/forms';
+import {FormGroup} from '@angular/forms';
 import {Member, Sex} from '../models/member';
 
 @Component({
@@ -13,9 +13,22 @@ export class MemberFormTemplateComponent implements OnInit {
   @Output() member = new EventEmitter<Member>();
   sexEnum = Sex;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
+  }
+
+  onSelectFile($event) {
+    if ($event.target.files && $event.target.files[0]) {
+      const reader = new FileReader();
+
+      reader.readAsDataURL($event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.form.patchValue({image: event.target.result});
+      };
+    }
   }
 
   saveMember() {

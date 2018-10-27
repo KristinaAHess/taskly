@@ -42,7 +42,7 @@
 
     <div class="form-margin">
       <label for="image" class="label-size">Image:</label>
-      <input id="image" type="file" accept="image/png, image/jpeg">
+      <input id="image" type="file" accept="image/png, image/jpeg" (change)="onSelectFile($event)">
     </div>
 
     <div class="form-margin">

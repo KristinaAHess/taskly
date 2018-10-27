@@ -19,6 +19,18 @@ export class TaskFormTemplateComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSelectFile($event) {
+    if ($event.target.files && $event.target.files[0]) {
+      const reader = new FileReader();
+
+      reader.readAsDataURL($event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.form.patchValue({icon: event.target.result});
+      };
+    }
+  }
+
   saveTask() {
     this.form.get('description').markAsTouched();
     this.form.get('date').markAsTouched();
