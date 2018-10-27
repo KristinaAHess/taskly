@@ -30,7 +30,10 @@ export class EventService {
                   start: new Date(task.date),
                   title: task.description,
                   allDay: true,
-                  color: {secondary: member.color}
+                  color: {
+                    primary: member.color,
+                    secondary: member.color
+                  }
                 });
               }
             }

@@ -1,8 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
-
 /* angular-cli file: src/styles.css */
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
-
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 html, mat-drawer-container, mat-drawer-content, body {
@@ -60,7 +58,7 @@ dd {
 .customClass {
   background-color: #dd3;
   border-radius: 5px;
-  margin:5px;
+  margin: 5px;
   width: 500px;
 }
 
@@ -78,4 +76,8 @@ dd {
 
 .customClass .img-ul-container {
   background-color: #FF6CAD !important;
+}
+
+.cal-week-view .cal-event{
+  color: black;
 }
