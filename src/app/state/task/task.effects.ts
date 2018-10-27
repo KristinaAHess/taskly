@@ -1,7 +1,8 @@
+import { TasksQuery } from 'src/app/state/task/task.reducer';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { concatMap, map, switchMap, tap } from 'rxjs/operators';
+import { concatMap, filter, map, switchMap, tap } from 'rxjs/operators';
 import { Task } from 'src/app/task/models/task';
 import { CalendarEvent } from 'angular-calendar';
 
@@ -9,16 +10,17 @@ import { TaskService } from './../../task/task.service';
 import {
   AddTaskSuccessAction,
   CalculateEventsSuccessAction,
+  LoadTaskByIdAction,
+  LoadTaskByIdSuccessAction,
   LoadTasksSuccessAction,
   RemoveTaskAction,
   RemoveTaskSuccessAction,
   TaskActionTypes,
   UpdateTaskAction,
-  UpdateTaskSuccessAction,
-  LoadTaskByIdAction,
-  LoadTaskByIdSuccessAction,
+  UpdateTaskSuccessAction
 } from './task.actions';
 import { EventService } from '../../task/event.service';
+import { select } from '@ngrx/store';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +31,7 @@ export class TaskEffects {
 
   @Effect() getTasks$ = this.actions$.pipe(
     ofType(TaskActionTypes.LOAD_TASKS),
+    this.filterIfLoaded(TasksQuery.getTasksLoaded),
     switchMap(payload => this.tasksService.getTasks()),
     map((tasks: Array<Task>) => new LoadTasksSuccessAction(tasks))
   );
@@ -36,6 +39,7 @@ export class TaskEffects {
   @Effect() getTaskById$ = this.actions$.pipe(
     ofType(TaskActionTypes.LOAD_TASK_BY_ID),
     map((action: LoadTaskByIdAction) => action.payload),
+    this.filterIfLoaded(TasksQuery.getTasksLoaded),
     switchMap(payload => this.tasksService.getTask(String(payload))),
     map((task: Task) => new LoadTaskByIdSuccessAction(task))
   );
@@ -68,4 +72,18 @@ export class TaskEffects {
     switchMap(payload => this.eventsService.calculateEvents()),
     map((events: Array<CalendarEvent>) => new CalculateEventsSuccessAction(events))
   );
+
+  private filterIfLoaded(fn) {
+    return source => source.pipe(
+      switchMap(payload => this.store.pipe(
+          select(fn),
+          map(loaded => {
+            return {loaded, payload};
+          })
+        )
+      ),
+      filter((res: {loaded: boolean, payload: any}) => !res.loaded),
+      map((res: {loaded: boolean, payload: any}) => res.payload)
+    );
+  }
 }

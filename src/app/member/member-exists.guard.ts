@@ -1,21 +1,19 @@
-import { LoadMembersAction, LoadMemberByIdAction } from 'src/app/state/member/member.actions';
-import { AddMemberAction } from './../state/member/member.actions';
-import { Member } from './models/member';
-import { MembersQuery } from 'src/app/state/member/member.reducer';
-import { MemberService } from './member.service';
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot } from '@angular/router';
-import { Store, select } from '@ngrx/store';
+import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { filter, mapTo } from 'rxjs/operators';
+import { LoadMemberByIdAction } from 'src/app/state/member/member.actions';
+import { MembersQuery } from 'src/app/state/member/member.reducer';
+
 import { ApplicationState } from '../state/app.state';
 import { SelectMemberAction } from '../state/member/member.actions';
-import { take, switchMap, tap, map } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { MemberService } from './member.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MemberExistsGuard implements CanActivate {
-  constructor(private store: Store<ApplicationState>, private memberService: MemberService) {}
+  constructor(private store: Store<ApplicationState>) {}
 
   canActivate(route: ActivatedRouteSnapshot) {
     const memberId = route.paramMap.get('id');
@@ -23,13 +21,12 @@ export class MemberExistsGuard implements CanActivate {
     this.store.dispatch(new LoadMemberByIdAction(+memberId));
 
     return this.store.pipe(
+      // select the selected member from the store (will be undefined some times!)
       select(MembersQuery.getSelectedMember),
-      take(1),
-      switchMap(selectedMember => {
-        return selectedMember ? of(true) : this.memberService.getMember(memberId).pipe(
-            map(member => !!member)
-          );
-      })
+      // only let it pass, if the member is not undefined
+      filter(member => !!member),
+      // as soon as a defined member passes the pipeline, return true (routing happens)
+      mapTo(true),
     );
   }
 }

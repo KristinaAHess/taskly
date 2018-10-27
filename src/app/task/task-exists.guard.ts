@@ -7,14 +7,14 @@ import { CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 import { Store, select } from '@ngrx/store';
 import { ApplicationState } from '../state/app.state';
 import { SelectTaskAction } from '../state/task/task.actions';
-import { take, switchMap, tap, map } from 'rxjs/operators';
+import { take, switchMap, tap, map, filter, mapTo } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TaskExistsGuard implements CanActivate {
-  constructor(private store: Store<ApplicationState>, private taskService: TaskService) {}
+  constructor(private store: Store<ApplicationState>) {}
 
   canActivate(route: ActivatedRouteSnapshot) {
     const taskId = route.paramMap.get('id');
@@ -22,13 +22,12 @@ export class TaskExistsGuard implements CanActivate {
     this.store.dispatch(new LoadTaskByIdAction(+taskId));
 
     return this.store.pipe(
+      // select the selected task from the store (will be undefined some times!)
       select(TasksQuery.getSelectedTask),
-      take(1),
-      switchMap(selectedTask => {
-        return selectedTask ? of(true) : this.taskService.getTask(taskId).pipe(
-            map(task => !!task)
-          );
-      })
+      // only let it pass, if the task is not undefined
+      filter(task => !! task),
+      // as soon as a defined task passes the pipeline, return true (routing happens)
+      mapTo(true)
     );
   }
 }
