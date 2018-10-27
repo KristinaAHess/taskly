@@ -38,7 +38,7 @@ export class TaskEffects {
   @Effect() addTask$ = this.actions$.pipe(
     ofType(TaskActionTypes.ADD_TASK),
     map((action: UpdateTaskAction) => action.payload),
-    concatMap((task: Task) => this.tasksService.updateTask(task)),
+    concatMap((task: Task) => this.tasksService.createTask(task)),
     tap((task: Task) => this.router.navigate(['/tasks', task.id])),
     map((task: Task) => new AddTaskSuccessAction(task))
   );
