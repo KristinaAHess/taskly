@@ -4,8 +4,8 @@ import { DashboardOverviewComponent } from './dashboard/dashboard-overview/dashb
 
 export const APP_ROUTES: Routes = [
   { path: '', component: DashboardOverviewComponent },
-  { path: 'members', loadChildren: './member/member.module#MemberModule' },
   { path: 'tasks', loadChildren: './task/task.module#TaskModule' },
+  { path: 'members', loadChildren: './member/member.module#MemberModule' },
 
   // Wildcard route serves as fallback route and has to be
   // the last defined route in this list.

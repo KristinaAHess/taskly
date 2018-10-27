@@ -32,6 +32,7 @@ mat-toolbar{
   color: white;
   text-decoration: none;
   margin-left: 10px;
+  margin-right: 10px;
 }
 
 .router-link-active {
