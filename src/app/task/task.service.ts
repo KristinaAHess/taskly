@@ -78,8 +78,9 @@ export class TaskService {
             for (const member of members) {
               if (member.id === task.preferredBy && distributedPointsPerPerson.get(member.id) < pointsPerPerson) {
                 taskListPerPerson.get(member.id).push(task);
-                distributedPointsPerPerson.set(member.id, distributedPointsPerPerson.get(member.id));
+                distributedPointsPerPerson.set(member.id, distributedPointsPerPerson.get(member.id) + task.points);
                 indexToRemove.push(+taskIndex);
+                break;
               }
             }
           }
