@@ -15,6 +15,7 @@ import { MemberFormTemplateComponent } from './member-form-template/member-form-
 import { MemberComponent } from './member.component';
 import { MEMBER_ROUTES } from './member.routes';
 import { MemberService } from './member.service';
+import { ColorPickerModule } from 'ngx-color-picker';
 
 @NgModule({
   imports: [
@@ -24,6 +25,7 @@ import { MemberService } from './member.service';
     MaterialModule,
     SharedModule,
     ReactiveFormsModule,
+    ColorPickerModule
   ],
   declarations: [
     MemberDetailsComponent,

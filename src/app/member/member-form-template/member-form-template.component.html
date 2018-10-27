@@ -10,7 +10,6 @@
       </span>
     </div>
 
-
     <div class="form-margin">
       <label for="nickname" class="label-size">Nickname:</label>
       <input formControlName="nickname" id="nickname" type="text" class="form-control">
@@ -37,6 +36,17 @@
     <div class="form-margin">
       <label for="image" class="label-size">Image:</label>
       <input id="image" type="file" accept="image/png, image/jpeg" (change)="onSelectFile($event)">
+    </div>
+
+    <div class="form-margin">
+      <label for="color" class="label-size">Color:</label>
+      <input
+        formControlName="color"
+        id="color"
+        type="string"
+        class="colorPicker"
+        [colorPicker]="color"
+        (colorPickerChange)="form.get('color').setValue($event)">
     </div>
 
     <button (click)="saveMember()">Save</button>
