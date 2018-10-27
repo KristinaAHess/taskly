@@ -44,7 +44,7 @@ export class TaskService {
         let pointsToDo = 0;
         for (const task of tasks) {
           const dateOfTask = moment(task.date, 'YYYY-MM-DD');
-          if (dateOfTask.isBetween(today, lastDayOfWeek) && !task.doneBy) {
+          if (dateOfTask.isSame(today) || dateOfTask.isBetween(today, lastDayOfWeek) && !task.doneBy) {
             pointsToDo = pointsToDo + task.points;
             console.log(task);
             tasksOfTheWeek.push(task);
@@ -133,6 +133,18 @@ export class TaskService {
         for (const taskIndex in tasksOfTheWeek) {
           const task = tasksOfTheWeek[taskIndex];
           let taskAlreadyDistributed = false;
+          // first distribute tasks to persons which have no tasks yet
+          distributedPointsPerPerson.forEach((points: number, id: number) => {
+            if (!taskAlreadyDistributed) {
+              if (points === 0) {
+                taskListPerPerson.get(id).push(task);
+                distributedPointsPerPerson.set(id, points + task.points);
+                indexToRemove.push(+taskIndex);
+                taskAlreadyDistributed = true;
+              }
+            }
+          });
+
           distributedPointsPerPerson.forEach((points: number, id: number) => {
             if (!taskAlreadyDistributed) {
               if (points < pointsPerPerson) {
