@@ -6,9 +6,9 @@
       "nickname": "Kati",
       "birthday": "1996-06-26",
       "sex": "female",
-      "score": 0,
       "image": "/assets/images/placeholder.png",
-      "color": "#31B404"
+      "score": 0,
+      "color": "#1da821"
     },
     {
       "id": 1,
@@ -36,9 +36,9 @@
       "nickname": "Krissi",
       "birthday": "1994-01-13",
       "sex": "female",
-      "score": 0,
       "image": "/assets/images/placeholder.png",
-      "color": "#2EFEF7"
+      "score": 0,
+      "color": "#1b18c1"
     }
   ],
   "tasks": [
