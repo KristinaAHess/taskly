@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ApplicationState} from '../../state/app.state';
 import {select, Store} from '@ngrx/store';
 import {MembersQuery} from '../../state/member/member.reducer';
@@ -23,11 +23,11 @@ export class TaskEditComponent implements OnInit {
   ngOnInit() {
     this.form = this.fb.group({
       id: '',
-      description: '',
-      points: 0,
-      date: '',
-      repetitionAfterDays: 0,
-      image: '',
+      description: ['', Validators.required],
+      points: [1, [Validators.min(1), Validators.max(5)]],
+      date: ['', Validators.required],
+      repetitionAfterDays: [0, [Validators.min(0), Validators.max(365)]],
+      icon: '/assets/icons/cleaning.png',
       preferredBy: '',
     });
 

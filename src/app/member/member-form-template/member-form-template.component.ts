@@ -13,13 +13,30 @@ export class MemberFormTemplateComponent implements OnInit {
   @Output() member = new EventEmitter<Member>();
   sexEnum = Sex;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  onSelectFile($event) {
+    if ($event.target.files && $event.target.files[0]) {
+      const reader = new FileReader();
+
+      reader.readAsDataURL($event.target.files[0]); // read file as data url
+
+      reader.onload = (event) => { // called once readAsDataURL is completed
+        this.form.patchValue({image: event.target.result});
+      };
+    }
+  }
+
   saveMember() {
-    this.member.emit(this.form.value);
+    this.form.get('name').markAsTouched();
+    this.form.get('sex').markAsTouched();
+    if (this.form.valid) {
+      this.member.emit(this.form.value);
+    }
   }
 
 }

@@ -5,6 +5,6 @@ export interface Task {
   date: string;
   repetitionAfterDays?: number;
   icon?: string;
-  preferredBy?: Array<number>;
+  preferredBy?: number;
 }
 
