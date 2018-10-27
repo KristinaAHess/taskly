@@ -47,7 +47,6 @@ export function membersReducer(state: MembersState = INITIAL_MEMBERS_STATE, acti
         ...state,
         entities
       };
-      break;
     case MemberActionTypes.UPDATE_MEMBER_SUCCESS:
       return { ...state, entities: { ...state.entities, [action.payload.id]: action.payload }};
     default:

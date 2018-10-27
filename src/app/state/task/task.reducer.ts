@@ -18,7 +18,7 @@ const INITIAL_TASKS_STATE = {
 export function tasksReducer(state: TasksState = INITIAL_TASKS_STATE, action: TasksActions): TasksState {
   switch (action.type) {
     case TaskActionTypes.LOAD_TASKS_SUCCESS:
-      return {
+      return state.loaded ? state : {
         ...state,
         entities: action.payload.reduce(
           (taskEntities, task) => {
@@ -28,6 +28,7 @@ export function tasksReducer(state: TasksState = INITIAL_TASKS_STATE, action: Ta
         ),
         loaded: true
       };
+    case TaskActionTypes.LOAD_TASK_BY_ID_SUCCESS:
     case TaskActionTypes.ADD_TASK_SUCCESS:
       const inStore = state.entities[action.payload.id];
 
@@ -46,7 +47,6 @@ export function tasksReducer(state: TasksState = INITIAL_TASKS_STATE, action: Ta
         ...state,
         entities
       };
-      break;
     case TaskActionTypes.UPDATE_TASK_SUCCESS:
       return { ...state, entities: { ...state.entities, [action.payload.id]: action.payload }};
     default:

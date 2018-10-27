@@ -26,7 +26,6 @@ export class MemberExistsGuard implements CanActivate {
       select(MembersQuery.getSelectedMember),
       take(1),
       switchMap(selectedMember => {
-        const addMemberToList = (member: Member) => this.store.dispatch(new AddMemberAction(member));
         return selectedMember ? of(true) : this.memberService.getMember(memberId).pipe(
             map(member => !!member)
           );

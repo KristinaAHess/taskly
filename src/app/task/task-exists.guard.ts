@@ -1,4 +1,4 @@
-import { AddTaskAction } from './../state/task/task.actions';
+import { AddTaskAction, LoadTaskByIdAction } from './../state/task/task.actions';
 import { Task } from './models/task';
 import { TasksQuery } from 'src/app/state/task/task.reducer';
 import { TaskService } from './task.service';
@@ -19,14 +19,13 @@ export class TaskExistsGuard implements CanActivate {
   canActivate(route: ActivatedRouteSnapshot) {
     const taskId = route.paramMap.get('id');
     this.store.dispatch(new SelectTaskAction(+taskId));
+    this.store.dispatch(new LoadTaskByIdAction(+taskId));
 
     return this.store.pipe(
-      select(TasksQuery.getTasksLoaded),
+      select(TasksQuery.getSelectedTask),
       take(1),
-      switchMap(loaded => {
-        const addTaskToList = (task: Task) => this.store.dispatch(new AddTaskAction(task));
-        return loaded ? of(true) : this.taskService.getTask(taskId).pipe(
-            tap(addTaskToList),
+      switchMap(selectedTask => {
+        return selectedTask ? of(true) : this.taskService.getTask(taskId).pipe(
             map(task => !!task)
           );
       })
