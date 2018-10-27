@@ -4,6 +4,7 @@ import {API_ENDPOINT} from '../app.tokens';
 import {Observable} from 'rxjs';
 import {Task} from './models/task';
 import {Member} from '../member/models/member';
+import * as moment from 'moment';
 
 @Injectable()
 export class TaskService {
@@ -36,21 +37,21 @@ export class TaskService {
     // and adding the points of the tasks
     this.getTasks().subscribe(
       (tasks) => {
-        const today = new Date();
-        today.setHours(0);
-        today.setMinutes(0);
-        today.setSeconds(0);
-        const lastDayOfWeek = today;
-        lastDayOfWeek.setDate(today.getDate() + 7);
+        const today = moment().startOf('day');
+        const lastDayOfWeek = moment();
+        lastDayOfWeek.add(7, 'day').startOf('day');
         const tasksOfTheWeek = new Array<Task>();
         let pointsToDo = 0;
         for (const task of tasks) {
-          const dateOfTask = new Date(task.date);
-          if (dateOfTask >= today && today < lastDayOfWeek && !Boolean(task.doneBy)) {
+          const dateOfTask = moment(task.date, 'YYYY-MM-DD');
+          if (dateOfTask.isBetween(today, lastDayOfWeek) && !task.doneBy) {
             pointsToDo = pointsToDo + task.points;
+            console.log(task);
             tasksOfTheWeek.push(task);
           }
         }
+        console.log('tasksOfTheWeek');
+        console.log(tasksOfTheWeek);
 
         // divide the points by the member count and round up
         const pointsPerPerson = Math.ceil(pointsToDo / members.length);
@@ -126,6 +127,8 @@ export class TaskService {
               }
             }
             task.doneBy = memberForTask;
+            console.log(task);
+            this.updateTask(task).subscribe();
           }
         });
       });

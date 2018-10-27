@@ -45,7 +45,8 @@
       "date": "2018-10-27",
       "repetitionAfterDays": 14,
       "icon": "/assets/icons/cleaning.png",
-      "preferredBy": []
+      "preferredBy": [],
+      "doneBy": null
     },
     {
       "id": 1,
@@ -54,7 +55,8 @@
       "date": "2018-10-28",
       "repetitionAfterDays": 7,
       "icon": "/assets/icons/cleaning.png",
-      "preferredBy": []
+      "preferredBy": [],
+      "doneBy": null
     },
     {
       "id": 2,
@@ -63,16 +65,18 @@
       "date": "2018-10-27",
       "repetitionAfterDays": 4,
       "icon": "/assets/icons/cleaning.png",
-      "preferredBy": []
+      "preferredBy": [],
+      "doneBy": null
     },
     {
       "id": 3,
       "description": "Watering flowers",
       "points": 1,
-      "date": "2018-10-27",
+      "date": "2018-10-30",
       "repetitionAfterDays": 8,
       "icon": "/assets/icons/cleaning.png",
-      "preferredBy": []
+      "preferredBy": [],
+      "doneBy": null
     },
     {
       "id": 0,
@@ -81,7 +85,8 @@
       "date": "2018-10-27",
       "repetitionAfterDays": 3,
       "icon": "/assets/icons/cleaning.png",
-      "preferredBy": []
+      "preferredBy": [],
+      "doneBy": null
     }
   ]
 }
