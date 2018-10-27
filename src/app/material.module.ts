@@ -11,6 +11,7 @@ import {
 } from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   exports: [
@@ -22,7 +23,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatIconModule,
     MatSidenavModule,
     MatFormFieldModule,
-    MatDividerModule
+    MatDividerModule,
+    MatDialogModule
 
   ]
 })

@@ -6,6 +6,7 @@ import { Store, select } from '@ngrx/store';
 import { MembersQuery } from 'src/app/state/member/member.reducer';
 import { Member } from '../models/member';
 import { Observable } from 'rxjs';
+import { DialogService } from 'src/app/shared/mat-confirm-dialog/dialog.service';
 
 @Component({
   selector: 'app-member-details',
@@ -16,7 +17,11 @@ export class MemberDetailsComponent implements OnInit {
 
   member$: Observable<Member>;
 
-  constructor(private route: ActivatedRoute, private store: Store<ApplicationState>, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private store: Store<ApplicationState>,
+    private router: Router,
+    private dialogService: DialogService) { }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
@@ -29,8 +34,13 @@ export class MemberDetailsComponent implements OnInit {
     this.router.navigate(['edit'], {relativeTo: this.route});
   }
 
-  removeMember(member: Member) {
-    this.store.dispatch(new RemoveMemberAction(member));
+  onDelete(member: Member) {
+    this.dialogService.openConfirmDialog('Are you sure to delete this member?')
+    .afterClosed().subscribe(res => {
+      if (res) {
+        this.store.dispatch(new RemoveMemberAction(member));
+      }
+    });
   }
 
 }

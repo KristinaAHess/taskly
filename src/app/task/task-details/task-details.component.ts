@@ -1,11 +1,12 @@
-import {Task} from 'src/app/task/models/task';
-import {Component, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {ActivatedRoute, Router} from '@angular/router';
-import {select, Store} from '@ngrx/store';
-import {ApplicationState} from 'src/app/state/app.state';
-import {TasksQuery} from 'src/app/state/task/task.reducer';
+import { DialogService } from './../../shared/mat-confirm-dialog/dialog.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { ApplicationState } from 'src/app/state/app.state';
 import { RemoveTaskAction } from 'src/app/state/task/task.actions';
+import { TasksQuery } from 'src/app/state/task/task.reducer';
+import { Task } from 'src/app/task/models/task';
 
 @Component({
   selector: 'app-task-details',
@@ -16,7 +17,11 @@ export class TaskDetailsComponent implements OnInit {
 
   task$: Observable<Task>;
 
-  constructor(private route: ActivatedRoute, private store: Store<ApplicationState>, private router: Router) { }
+  constructor(
+    private route: ActivatedRoute,
+    private store: Store<ApplicationState>,
+    private router: Router,
+    private dialogService: DialogService) { }
 
   ngOnInit() {
     this.task$ = this.store.pipe(select(TasksQuery.getSelectedTask));
@@ -26,7 +31,12 @@ export class TaskDetailsComponent implements OnInit {
     this.router.navigate(['edit'], {relativeTo: this.route});
   }
 
-  removeTask(task: Task) {
-    this.store.dispatch(new RemoveTaskAction(task));
+  onDelete(task) {
+    this.dialogService.openConfirmDialog('Are you sure to delete this task?')
+    .afterClosed().subscribe(res => {
+      if (res) {
+        this.store.dispatch(new RemoveTaskAction(task));
+      }
+    });
   }
 }

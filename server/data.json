@@ -26,15 +26,6 @@
       "sex": "female",
       "score": 0,
       "image": "/assets/images/placeholder.png"
-    },
-    {
-      "id": 3,
-      "name": "Kristina He�",
-      "nickname": "Krissi",
-      "birthday": "1994-01-13",
-      "sex": "female",
-      "score": 0,
-      "image": "/assets/images/placeholder.png"
     }
   ],
   "tasks": [

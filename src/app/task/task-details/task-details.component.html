@@ -17,7 +17,7 @@
     </mat-card-content>
     <mat-card-actions fxLayout fxLayoutAlign="center center">
       <a mat-button (click)="navigateToEditor()" title="Edit {{task?.description}}"><img src="/assets/icons/edit.png" style="width: 15px; padding: 10px;">Edit</a>
-      <a mat-button (click)="removeTask(task)" title="Remove {{task?.name}}"><img src="/assets/icons/remove.png" style="width: 15px; padding: 10px;">Remove</a>
+      <a mat-button (click)="onDelete(task)" title="Remove {{task?.name}}"><img src="/assets/icons/remove.png" style="width: 15px; padding: 10px;">Remove</a>
     </mat-card-actions>
   </mat-card>
 </div>
